@@ -5,7 +5,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --watch server --exec node server/server.js"
+    "start": "nodemon --watch server --exec node server/server.js",
+    "lint": "eslint --ext .js --ignore-path .gitignore"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,8 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
+    "eslint": "^7.25.0",
+    "eslint-plugin-react": "^7.23.2",
     "nodemon": "^2.0.7"
   }
 }
