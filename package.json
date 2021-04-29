@@ -1,0 +1,26 @@
+{
+  "name": "online-shop",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --watch server --exec node server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maya-salcedo/escooter-shop.git"
+  },
+  "author": "May Salcedo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maya-salcedo/escooter-shop/issues"
+  },
+  "homepage": "https://github.com/maya-salcedo/escooter-shop#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}

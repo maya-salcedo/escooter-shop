@@ -152,6 +152,23 @@ img.large {
 .success {
   color: #289672;
 }
-.error {
+.danger {
   color: #d32626;
 }
+
+.alert {
+  padding: 1rem;
+  border: 00.1rem solid transparent;
+  border-radius: 0.5rem;
+}
+
+.alert-info {
+  color: #23049d;
+  background-color: #e0e0ff;
+}
+
+.alert-danger {
+  color: #cf0000;
+  background-color: #ffe0e0e0;
+}
+
