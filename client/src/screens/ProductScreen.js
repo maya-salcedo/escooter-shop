@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Rating from '../components/Rating';
+import data from '../data';
 
 const ProductScreen = (props) => {
-  const product = props.products.find((x) => x._id === props.match.params.id);
+  const product = data.products.find((x) => x._id === props.match.params.id);
   if (!product) {
     return <div>Product not found</div>
   }
