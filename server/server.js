@@ -1,10 +1,16 @@
 import express from 'express'; 
 import data from './data.js';
+import mongoose from 'mongoose';
 import userRouter from './routers/userRouter.js';
 
 
 const app = express(); 
 
+mongoose.connect('mongodb://localhost/escooterlaneshop', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true
+});
 
 
 app.get('/api/products/:id', (req, res) => {
