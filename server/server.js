@@ -32,6 +32,8 @@ app.get('/', (req, res) => {
   res.send('Server is ready');
 });
 
+// app.use((err, req, res, next))
+
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => {
