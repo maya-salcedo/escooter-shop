@@ -19,7 +19,8 @@
   },
   "homepage": "https://github.com/maya-salcedo/escooter-shop#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongoose": "^5.12.7"
   },
   "devDependencies": {
     "eslint": "^7.25.0",
