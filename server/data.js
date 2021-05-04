@@ -17,7 +17,6 @@ const data = {
   ],
   products: [
     {
-      _id: '1',
       name: 'Synergy Sport 800W',
       category: 'Electric scooter',
       image: '/images/p1.jpg',
@@ -29,7 +28,6 @@ const data = {
       description: 'high quality product',
     },
     {
-      _id: '2',
       name: 'Xiaomi Mi Electric Scooter PRO2',
       category: 'Electric scooter',
       image: '/images/p2.jpg',
@@ -41,7 +39,6 @@ const data = {
       description: 'high quality product',
     },
     {
-      _id: '3',
       name: 'Dualtron Storm Electric Scooter',
       category: 'Electric scooter',
       image: '/images/p3.jpg',
@@ -53,7 +50,6 @@ const data = {
       description: 'high quality product',
     },
     {
-      _id: '4',
       name: 'Zero 11X',
       category: 'Electric scooter',
       image: '/images/p4.jpg',
@@ -65,7 +61,6 @@ const data = {
       description: 'high quality product',
     },
     {
-      _id: '5',
       name: 'Kaabo Wolf Warrior X Pro',
       category: 'Electric scooter',
       image: '/images/p5.jpg',
@@ -77,7 +72,6 @@ const data = {
       description: 'high quality product',
     },
     {
-      _id: '6',
       name: 'Zero 10x 21ah/60v Dual 1200w',
       category: 'Electric scooter',
       image: '/images/p6.jpg',
