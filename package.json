@@ -20,8 +20,10 @@
   "homepage": "https://github.com/maya-salcedo/escooter-shop#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "dotenv": "^8.6.0",
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.7"
   },
   "devDependencies": {
