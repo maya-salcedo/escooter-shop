@@ -24,7 +24,7 @@ const CartScreen = (props) => {
   };
 
   const checkoutHandler = () => {
-    props.history.push('/sign?redirect=shipping');
+    props.history.push('/signin?redirect=shipping');
   };
 
   return(

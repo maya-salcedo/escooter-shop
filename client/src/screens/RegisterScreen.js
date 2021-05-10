@@ -65,7 +65,7 @@ const RegisterScreen = (props) => {
         <div>
           <label />
           <div>
-            Already have an account? <Link to="/signin">Sign-In</Link>
+            Already have an account? <Link to={`/signin?redirect=${redirect}`}>Sign-In</Link>
           </div>
         </div>
       </form>
