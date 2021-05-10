@@ -4,3 +4,4 @@ React
 Node
 Express
 Redux
+MongoDB
