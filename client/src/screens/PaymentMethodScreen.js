@@ -10,7 +10,7 @@ const PaymentMethodScreen = (props) => {
     props.history.push('/shipping');
   }
   const [paymentMethod, setPaymentMethod] = useState('PayPal');
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(savePaymentMethod(paymentMethod));

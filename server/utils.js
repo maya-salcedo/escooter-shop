@@ -23,7 +23,7 @@ export const isAuth = (req, res, next) => {
       process.env.JWT_SECRET || 'somethingsecret',
       (err, decode) => {
         if (err) {
-          res.status(401).send({ message: 'Invalid Token' });
+          res.status(401).send({ message: err.message });
         } else {
           req.user = decode; //all information about the user
           next(); //pass user as property of request to the next middleware
