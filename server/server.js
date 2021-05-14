@@ -22,6 +22,9 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/escooterlanesho
 app.use('/api/users', userRouter);
 app.use('/api/products', productRouter); //to send data from mongodb
 app.use('/api/orders', orderRouter); 
+app.use('/api/config/paypal', (req, res) => {
+  res.send(process.env.PAYPAL_CLIENT_ID || 'sb');
+});
 app.get('/', (req, res) => {
   res.send('Server is ready');
 });
