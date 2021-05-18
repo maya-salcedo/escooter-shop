@@ -24,7 +24,7 @@ const ProfileScreen = () => {
       dispatch(detailsUser(userInfo._id));
     } else {
       setName(user.name);
-      setEmail(user.name);
+      setEmail(user.email);
     }
   }, [dispatch, userInfo._id, user]);
   const submitHandler = (e) => {
