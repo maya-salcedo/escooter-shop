@@ -14,6 +14,8 @@ import OrderScreen from './screens/OrderScreen';
 import OrderHistoryScreen from './screens/OrderHistoryScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import PrivateRoute from './components/PrivateRoute';
+import AdminRoute from './components/AdminRoute';
+import ProductListScreen from './screens/ProductListScreen';
 
 const App = () => {
   const cart = useSelector(state => state.cart); //to get access to cart items from redux
@@ -44,7 +46,6 @@ const App = () => {
               <div className="dropdown">
                 <Link to="#">
                   {userInfo.name} <i className="fa fa-caret-down"></i>
-                  {console.log(userInfo)}
                 </Link> 
                 <ul className="dropdown-content">
                   <li><Link to="/profile">User Profile</Link></li>
@@ -89,6 +90,7 @@ const App = () => {
         <Route path="/order/:id" component={OrderScreen}></Route>
         <Route path="/orderhistory" component={OrderHistoryScreen}></Route>
         <PrivateRoute path="/profile" component={ProfileScreen}></PrivateRoute>
+        <AdminRoute path="/productlist" component={ProductListScreen}></AdminRoute>
         <Route path="/" component={HomeScreen} exact></Route>
       </main>
       <footer className="row center">All right reserved</footer>
