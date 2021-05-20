@@ -24,7 +24,7 @@ userRouter.post('/signin',
           _id: user._id,
           name: user.name,
           email: user.email,
-          idAdmin: user.isAdmin,
+          isAdmin: user.isAdmin,
           token: generateToken(user)
         });
         return;
@@ -46,7 +46,7 @@ userRouter.post('/register',
       _id: createUser._id,
       name: createUser.name,
       email: createUser.email,
-      idAdmin: createUser.isAdmin,
+      isAdmin: createUser.isAdmin,
       token: generateToken(createUser)
     });
   })
@@ -74,7 +74,7 @@ userRouter.put('/profile', isAuth, expressAsyncHandler(async (req, res) => {
       _id: updatedUser._id,
       name: updatedUser.name,
       email: updatedUser.email,
-      isAdmin: updatedUser.idAdmin,
+      isAdmin: updatedUser.isAdmin,
       token: generateToken(updatedUser)
     });
   }
