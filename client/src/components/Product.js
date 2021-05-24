@@ -18,7 +18,10 @@ const Product = (props) => {
           <h2>{product.name}</h2>
         </Link>
         <Rating rating={product.rating} numReviews={product.numReviews}/>
-        <div className="price">€{product.price}</div>
+        <div>
+          <div className="price">€{product.price}</div>
+        
+        </div>
       </div>
     </div>
   );
