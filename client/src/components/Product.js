@@ -20,7 +20,11 @@ const Product = (props) => {
         <Rating rating={product.rating} numReviews={product.numReviews}/>
         <div>
           <div className="price">€{product.price}</div>
-        
+          <div>
+            <Link to={`/seller/${product.seller._id}`}>
+              {product.seller.seller.name}
+            </Link>
+          </div>
         </div>
       </div>
     </div>

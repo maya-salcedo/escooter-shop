@@ -60,7 +60,6 @@ const ProductScreen = (props) => {
                     Seller{' '}
                     <h2>
                       <Link to={`/seller/${product.seller._id}`}>
-                        {console.log(product.seller._id)}
                         {product.seller.seller.name}
                       </Link>
                     </h2>

@@ -18,7 +18,7 @@ const SellerScreen = (props) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(detailsUser(sellerId));
-    dispatch(listProducts({ sellerId }));
+    dispatch(listProducts({ seller: sellerId }));
   }, [dispatch, sellerId]);
   return(
     <div className="row top">
@@ -46,7 +46,7 @@ const SellerScreen = (props) => {
               ></Rating>
             </li>
             <li>
-              <a href={`mailto:${user.email}`}>ContactSeller</a>
+              <a href={`mailto:${user.email}`}>Contact Seller</a>
             </li>
             <li>
               {user.seller.description}
