@@ -22,6 +22,8 @@ import UserListScreen from './screens/UserListScreen';
 import UserEditScreen from './screens/UserEditScreen';
 import SellerRoute from './components/SellerRoute';
 import SellerScreen from './screens/SellerScreen';
+import SearchBox from './components/SearchBox';
+import SearchScreen from './screens/SearchScreen';
 
 const App = () => {
   const cart = useSelector(state => state.cart); //to get access to cart items from redux
@@ -40,6 +42,11 @@ const App = () => {
           <Link className="brand" to="/">
             escooterlane shop
           </Link>
+        </div>
+        <div>
+          <Route
+            render={({ history }) => (<SearchBox history={history}></SearchBox>)} 
+          ></Route>
         </div>
         <div>
           <Link to="/cart">Cart
@@ -110,6 +117,7 @@ const App = () => {
         <Route path="/placeorder" component={PlaceOrderScreen}></Route>
         <Route path="/order/:id" component={OrderScreen}></Route>
         <Route path="/orderhistory" component={OrderHistoryScreen}></Route>
+        <Route path="/search/name/:name?" component={SearchScreen} exact></Route>
         <PrivateRoute path="/profile" component={ProfileScreen}></PrivateRoute>
         <AdminRoute path="/productlist" component={ProductListScreen} exact></AdminRoute>
         <AdminRoute path="/orderlist" component={OrderListScreen} exact></AdminRoute>
