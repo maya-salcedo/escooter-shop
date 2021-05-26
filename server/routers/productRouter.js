@@ -10,7 +10,7 @@ productRouter.get('/',
   expressAsyncHandler(async (req, res) => {
     const seller = req.query.seller || '';
     const sellerFilter = seller ?  { seller } : {};
-    const products = await Product.find({...sellerFilter}.populate('seller', 'seller.name seller.logo'));
+    const products = await Product.find({...sellerFilter}).populate('seller', 'seller.name seller.logo');
     res.send(products);
   })
 ); //to send the products to frontend

@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect, Route } from 'react-router-dom';
 
-const SelllerRoute = ({ component: Component, ...rest}) => {
+const SellerRoute = ({ component: Component, ...rest}) => {
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
   return(
@@ -11,4 +11,4 @@ const SelllerRoute = ({ component: Component, ...rest}) => {
   );
 }
 
-export default SelllerRoute;
+export default SellerRoute;

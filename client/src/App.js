@@ -20,7 +20,7 @@ import ProductEditScreen from './screens/ProductEditScreen';
 import OrderListScreen from './screens/OrderListScreen';
 import UserListScreen from './screens/UserListScreen';
 import UserEditScreen from './screens/UserEditScreen';
-import SelllerRoute from './components/SellerRoute';
+import SellerRoute from './components/SellerRoute';
 import SellerScreen from './screens/SellerScreen';
 
 const App = () => {
@@ -115,8 +115,8 @@ const App = () => {
         <AdminRoute path="/orderlist" component={OrderListScreen} exact></AdminRoute>
         <AdminRoute path="/userList" component={UserListScreen}></AdminRoute>
         <AdminRoute path="/user/:id/edit" component={UserEditScreen}></AdminRoute>
-        <SelllerRoute path="/productlist/seller" component={ProductListScreen}></SelllerRoute>
-        <SelllerRoute path="/orderlist/seller" component={OrderListScreen}></SelllerRoute>
+        <SellerRoute path="/productlist/seller" component={ProductListScreen}></SellerRoute>
+        <SellerRoute path="/orderlist/seller" component={OrderListScreen}></SellerRoute>
         <Route path="/" component={HomeScreen} exact></Route>
       </main>
       <footer className="row center">All right reserved</footer>

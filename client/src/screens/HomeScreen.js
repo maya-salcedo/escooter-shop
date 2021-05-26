@@ -26,6 +26,7 @@ const HomeScreen = () => {
   return(
     <div>
       <h2>Top Sellers</h2>
+        
         {loadingSellers ? (
             <LoadingBox></LoadingBox>
           ) : errorSellers ? (
@@ -46,6 +47,7 @@ const HomeScreen = () => {
             </>
           )}  
       <h2>Featured Products</h2>
+      {console.log(products)}
         {loading ? (
           <LoadingBox></LoadingBox>
         ) : error ? (
