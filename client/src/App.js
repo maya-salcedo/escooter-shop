@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Link, Route } from 'react-router-dom'
 import { signout } from './actions/userActions';
@@ -28,6 +28,7 @@ import { listProductCategories } from './actions/productActions';
 
 const App = () => {
   const cart = useSelector(state => state.cart); //to get access to cart items from redux
+  const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
   const { cartItems } = cart;
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
@@ -45,6 +46,9 @@ const App = () => {
     <div className="grid-container">
       <header className="row">
         <div>
+          <button type="button" className="open-sidebar" onClick={() => setSidebarIsOpen(true)}>
+            <i className="fa fa-bars"></i>
+          </button>
           <Link className="brand" to="/">
             escooterlane shop
           </Link>
@@ -111,6 +115,20 @@ const App = () => {
           }
         </div>
       </header>
+      <aside className={sidebarIsOpen ? 'open' : ''}>
+        <ul className="categories">
+          <li>
+            <strong>Categories</strong>
+            <button
+              onClick={() => setSidebarIsOpen(false)}
+              className="close-sidebar"
+              type="button"
+            >
+              <i className="fa fa-close"></i>
+            </button>
+          </li>
+        </ul>
+      </aside>
       <main>
         <Route path="/seller/:id" component={SellerScreen}></Route>
         <Route path="/cart/:id?" component={CartScreen}></Route>

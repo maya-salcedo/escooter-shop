@@ -67,7 +67,6 @@ const SearchScreen = (props) => {
             <MessageBox variant="danger">{error}</MessageBox>
           ) :  (
             <>
-              {console.log(products)}
               {products.length === 0 && <MessageBox>No Products Found</MessageBox>}
               <div className="row center">
                 {products.map((product) => (
