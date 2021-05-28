@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Link, Route } from 'react-router-dom'
 import { signout } from './actions/userActions';
@@ -22,9 +22,15 @@ import UserListScreen from './screens/UserListScreen';
 import UserEditScreen from './screens/UserEditScreen';
 import SellerRoute from './components/SellerRoute';
 import SellerScreen from './screens/SellerScreen';
+import SearchBox from './components/SearchBox';
+import SearchScreen from './screens/SearchScreen';
+import { listProductCategories } from './actions/productActions';
+import LoadingBox from './components/LoadingBox';
+import MessageBox from './components/MessageBox';
 
 const App = () => {
   const cart = useSelector(state => state.cart); //to get access to cart items from redux
+  const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
   const { cartItems } = cart;
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
@@ -32,14 +38,29 @@ const App = () => {
   const signoutHandler = () => {
     dispatch(signout());
   };
+  const productCategoryList = useSelector((state) => state.productCategoryList);
+  
+  const { loading: loadingCategories, error: errorCategories, categories } = productCategoryList;
+  
+  useEffect(()=> {
+    dispatch(listProductCategories());
+  }, [dispatch]);
   return (
     <BrowserRouter>
     <div className="grid-container">
       <header className="row">
         <div>
+          <button type="button" className="open-sidebar" onClick={() => setSidebarIsOpen(true)}>
+            <i className="fa fa-bars"></i>
+          </button>
           <Link className="brand" to="/">
             escooterlane shop
           </Link>
+        </div>
+        <div>
+          <Route
+            render={({ history }) => (<SearchBox history={history}></SearchBox>)} 
+          ></Route>
         </div>
         <div>
           <Link to="/cart">Cart
@@ -98,6 +119,33 @@ const App = () => {
           }
         </div>
       </header>
+      <aside className={sidebarIsOpen ? 'open' : ''}>
+        <ul className="categories">
+          <li>
+            <strong>Categories</strong>
+            <button
+              onClick={() => setSidebarIsOpen(false)}
+              className="close-sidebar"
+              type="button"
+            >
+              <i className="fa fa-close"></i>
+            </button>
+          </li>
+          { loadingCategories ? (<LoadingBox></LoadingBox>) 
+            : errorCategories ? (<MessageBox variant="danger">{errorCategories}</MessageBox>) 
+            : (categories.map((c) => (
+                <li key={c}>
+                  <Link
+                    to={`/search/category/${c}`}
+                    onClick={() => setSidebarIsOpen(false)}
+                  >
+                  {c}
+                  </Link>
+                </li>
+            )))
+          }
+        </ul>
+      </aside>
       <main>
         <Route path="/seller/:id" component={SellerScreen}></Route>
         <Route path="/cart/:id?" component={CartScreen}></Route>
@@ -110,6 +158,10 @@ const App = () => {
         <Route path="/placeorder" component={PlaceOrderScreen}></Route>
         <Route path="/order/:id" component={OrderScreen}></Route>
         <Route path="/orderhistory" component={OrderHistoryScreen}></Route>
+        <Route path="/search/name/:name?" component={SearchScreen} exact></Route>
+        <Route path="/search/category/:category" component={SearchScreen} exact></Route>
+        <Route path="/search/category/:category/name/:name" component={SearchScreen} exact></Route>
+        <Route path="/search/category/:category/name/:name/min/:min/max/:max/rating/:rating/order/:order" component={SearchScreen} exact></Route>
         <PrivateRoute path="/profile" component={ProfileScreen}></PrivateRoute>
         <AdminRoute path="/productlist" component={ProductListScreen} exact></AdminRoute>
         <AdminRoute path="/orderlist" component={OrderListScreen} exact></AdminRoute>
