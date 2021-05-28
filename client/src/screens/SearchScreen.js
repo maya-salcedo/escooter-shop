@@ -41,23 +41,23 @@ const SearchScreen = (props) => {
           <h3>Department</h3>
           { loadingCategories ? (
           <LoadingBox></LoadingBox>
-        ) : errorCategories ? (
-          <MessageBox variant="danger">{errorCategories}</MessageBox>
-        ) :  (
-          <ul>
-            
-            {categories.map((c) => (
-              <li key={c}>
-                <Link 
-                  className={c === category ? 'active' : ''} 
-                  to={getFilterUrl({ category: c })}
-                >
-                {c}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        ) 
+          ) : errorCategories ? (
+            <MessageBox variant="danger">{errorCategories}</MessageBox>
+          ) :  (
+            <ul>
+              
+              {categories.map((c) => (
+                <li key={c}>
+                  <Link 
+                    className={c === category ? 'active' : ''} 
+                    to={getFilterUrl({ category: c })}
+                  >
+                  {c}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          ) 
         }
         </div>
         <div className="col-3">

@@ -25,6 +25,8 @@ import SellerScreen from './screens/SellerScreen';
 import SearchBox from './components/SearchBox';
 import SearchScreen from './screens/SearchScreen';
 import { listProductCategories } from './actions/productActions';
+import LoadingBox from './components/LoadingBox';
+import MessageBox from './components/MessageBox';
 
 const App = () => {
   const cart = useSelector(state => state.cart); //to get access to cart items from redux
@@ -37,7 +39,9 @@ const App = () => {
     dispatch(signout());
   };
   const productCategoryList = useSelector((state) => state.productCategoryList);
+  
   const { loading: loadingCategories, error: errorCategories, categories } = productCategoryList;
+  
   useEffect(()=> {
     dispatch(listProductCategories());
   }, [dispatch]);
@@ -127,6 +131,19 @@ const App = () => {
               <i className="fa fa-close"></i>
             </button>
           </li>
+          { loadingCategories ? (<LoadingBox></LoadingBox>) 
+            : errorCategories ? (<MessageBox variant="danger">{errorCategories}</MessageBox>) 
+            : (categories.map((c) => (
+                <li key={c}>
+                  <Link
+                    to={`/search/category/${c}`}
+                    onClick={() => setSidebarIsOpen(false)}
+                  >
+                  {c}
+                  </Link>
+                </li>
+            )))
+          }
         </ul>
       </aside>
       <main>
