@@ -36,7 +36,6 @@ productRouter.get('/',
 
 productRouter.get('/categories', expressAsyncHandler(async (req, res) => {
   const categories = await Product.find().distinct('category');
-  console.log(categories);
   res.send(categories);
 }));
 

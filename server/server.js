@@ -27,6 +27,9 @@ app.use('/api/orders', orderRouter);
 app.use('/api/config/paypal', (req, res) => {
   res.send(process.env.PAYPAL_CLIENT_ID || 'sb');
 });
+app.use('/api/config/google', (req, res) => {
+  res.send(process.env.GOOGLE_API_KEY || '');
+});
 const __dirname = path.resolve();
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 app.get('/', (req, res) => {

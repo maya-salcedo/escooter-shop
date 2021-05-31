@@ -27,6 +27,7 @@ import SearchScreen from './screens/SearchScreen';
 import { listProductCategories } from './actions/productActions';
 import LoadingBox from './components/LoadingBox';
 import MessageBox from './components/MessageBox';
+import MapScreen from './screens/MapScreen';
 
 const App = () => {
   const cart = useSelector(state => state.cart); //to get access to cart items from redux
@@ -163,6 +164,7 @@ const App = () => {
         <Route path="/search/category/:category/name/:name" component={SearchScreen} exact></Route>
         <Route path="/search/category/:category/name/:name/min/:min/max/:max/rating/:rating/order/:order" component={SearchScreen} exact></Route>
         <PrivateRoute path="/profile" component={ProfileScreen}></PrivateRoute>
+        <PrivateRoute path="/map" component={MapScreen}></PrivateRoute>
         <AdminRoute path="/productlist" component={ProductListScreen} exact></AdminRoute>
         <AdminRoute path="/orderlist" component={OrderListScreen} exact></AdminRoute>
         <AdminRoute path="/userList" component={UserListScreen}></AdminRoute>
