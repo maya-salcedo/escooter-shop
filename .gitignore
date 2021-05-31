@@ -7,7 +7,7 @@
 /.pnp
 .pnp.js
 .eslintrc.js
-.env
+
 
 
 # testing
@@ -18,6 +18,8 @@
 
 # misc
 .DS_Store
+.env
+/client/.env
 .env.local
 .env.development.local
 .env.test.local
