@@ -164,6 +164,7 @@ const App = () => {
         <Route path="/search/category/:category/name/:name/min/:min/max/:max/rating/:rating/order/:order/pageNumber/:pageNumber" component={SearchScreen} exact></Route>
         <PrivateRoute path="/profile" component={ProfileScreen}></PrivateRoute>
         <AdminRoute path="/productlist" component={ProductListScreen} exact></AdminRoute>
+        <AdminRoute path="/productlist/pageNumber/:pageNumber" component={ProductListScreen} exact></AdminRoute>
         <AdminRoute path="/orderlist" component={OrderListScreen} exact></AdminRoute>
         <AdminRoute path="/userList" component={UserListScreen}></AdminRoute>
         <AdminRoute path="/user/:id/edit" component={UserEditScreen}></AdminRoute>
