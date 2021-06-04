@@ -89,11 +89,29 @@ io.on('connection', (socket) => {
   socket.on('onMessage', (message) => {
     if (message.isAdmin) {
       const user = users.find((x) => x._id === message._id && x.online);
+      if (user) { 
+        io.to(user.socketId).emit('message', message);
+        user.messages.push(message);
+      }
+    } else {
+      const admin = users.find((x) => x.isAdmin && x.online);
+      if (admin) {
+        io.to(admin.socketId).emit('message', message);
+        const user = users.find((x) => x._id === message._id && x.online);
+        user.messages.push(message);
+      } else {
+        io.to(socket.id).emit('message', {
+          name: 'Admin',
+          body: 'Sorry. I am not online right now'
+        });
+      }
     }
   });
 });
 
-
+httpServer.listen(port, () => {
+  console.log(`Serve at http://localhost:${port}`);
+})
 
 // app.listen(port, () => {
 //   console.log(`Serve at http://localhost:${port}`);
