@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import socketIOClient from 'socket.io-client';
 import { useSelector } from 'react-redux';
 import MessageBox from '../components/MessageBox';
-import { skipPartiallyEmittedExpressions } from '../../node_modules/typescript/lib/typescript';
+
 
 let allUsers = [];
 let allMessages = [];
@@ -16,7 +16,7 @@ const SupportScreen = () => {
   const [selectedUser, setSelectedUser] = useState({});
   const [ socket, setSocket] = useState(null);
   const uiMessagesRef = useRef(null);
-  const [messageBody, setMessageBody] = userState('');
+  const [messageBody, setMessageBody] = useState('');
   const [messages, setMessages] = useState([]);
   const [users, setUsers] = useState([]);
   const userSignin = useSelector((state) => state.userSignin);
@@ -27,54 +27,89 @@ const SupportScreen = () => {
       uiMessagesRef.current.scrollBy({
         top: uiMessagesRef.current.clientHeight,
         left: 0,
-        behavior: smooth
+        behavior: 'smooth'
       });
       if (!socket) {
         const sk = socketIOClient(ENDPOINT);
         setSocket(sk);
-      }
-      sk.emit('onLogin', {
-        _id: userInfo._id,
-        name: userInfo.name,
-        isAdmin: userInfo.isAdmin
-      });
-      sk.on('message', (data) => {
-        if (allSelectedUser._id === data._id) {
-          allMessages = [...allMessages, data];
-        } else {
-          const existUser = allUsers.find((user) => user._id === data._id);
+        sk.emit('onLogin', {
+          _id: userInfo._id,
+          name: userInfo.name,
+          isAdmin: userInfo.isAdmin
+        });
+        sk.on('message', (data) => {
+          if (allSelectedUser._id === data._id) {
+            allMessages = [...allMessages, data];
+          } else {
+            const existUser = allUsers.find((user) => user._id === data._id);
+            if (existUser) {
+              allUsers = allUsers.map((user) => 
+              user._id === existUser._id ? { ...user, unread: true } : user 
+              );
+              setUsers(allUsers);
+            }
+          }
+          setMessages(allMessages);
+        });
+        sk.on('updateUser', (updatedUser) => {
+          const existUser = allUsers.find((user) => user._id === updatedUser._id);
           if (existUser) {
             allUsers = allUsers.map((user) => 
-            user._id === existUser._id ? { ...user, unread: true } : user 
+            user._id === existUser._id ? updatedUser : user
             );
             setUsers(allUsers);
+          } else {
+            allUsers = [...allUsers, updatedUser];
+            setUsers(allUsers);
           }
-        }
-        setMessages(allMessages);
-      });
-      sk.on('updateUser', (updatedUser) => {
-        const existUser = allUsers.find((user) => user._id === updatedUser._id);
-        if (existUser) {
-          allUsers = allUsers.map((user) => 
-          user._id === existUser._id ? updatedUser : user
-          );
+        });
+        sk.on('listUsers', (updatedUser) => {
+          allUsers = updatedUser;
           setUsers(allUsers);
-        } else {
-          allUsers = [...allUsers, updatedUser];
-          setUsers(allUsers);
-        }
-      });
-      sk.on('listUsers', (updatedUser) => {
-        allUsers = updatedUser;
-        setUsers(allUsers);
-      });
-      sk.on('selectUser', (user) => {
-        allMessages = user.messages;
-        setMessages(allMessages);
-      })
+        });
+        sk.on('selectUser', (user) => {
+          allMessages = user.messages;
+          setMessages(allMessages);
+        })
+      }
     }
-    
   }, [messages, socket, users]);
+
+  const selectUser = (user) => {
+    allSelectedUser = user;
+    setSelectedUser(allSelectedUser);
+    const existUser = allUsers.find((x) => x._id === user._id);
+    if (existUser) {
+      allUsers = allUsers.map((x) => 
+        x._id === existUser._id ? { ...x, unread: false } : x
+      );
+      setUsers(allUsers);
+    }
+    socket.emit('onUserSelected', user);
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    if (!messageBody.trim()) {
+      alert('Error. Please type message.');
+    } else {
+      allMessages = [
+        ...allMessages,
+        { body: messageBody, name: userInfo.name }
+      ];
+      setMessages(allMessages);
+      setMessageBody('');
+      setTimeout(() => {
+        socket.emit('onMessage', {
+          body: messageBody,
+          name: userInfo.name,
+          isAdmin: userInfo.isAdmin,
+          _id: selectedUser._id
+        });
+      }, 1000);
+    }
+  };
+
   return (
     <div className="row top full-container">
       <div className="col-1 support-users">

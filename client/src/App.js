@@ -28,6 +28,7 @@ import { listProductCategories } from './actions/productActions';
 import LoadingBox from './components/LoadingBox';
 import MessageBox from './components/MessageBox';
 import DashboardScreen from './screens/DashboardScreen';
+import SupportScreen from './screens/SupportScreen';
 
 const App = () => {
   const cart = useSelector(state => state.cart); //to get access to cart items from redux
@@ -114,6 +115,9 @@ const App = () => {
                 <li>
                   <Link to="/userlist">Users</Link>
                 </li>
+                <li>
+                  <Link to="/support">Support</Link>
+                </li>
               </ul>
             </div>
           )
@@ -170,6 +174,7 @@ const App = () => {
         <AdminRoute path="/userList" component={UserListScreen}></AdminRoute>
         <AdminRoute path="/user/:id/edit" component={UserEditScreen}></AdminRoute>
         <AdminRoute path="/dashboard" component={DashboardScreen}></AdminRoute>
+        <AdminRoute path="/support" component={SupportScreen}></AdminRoute>
         <SellerRoute path="/productlist/seller" component={ProductListScreen}></SellerRoute>
         <SellerRoute path="/orderlist/seller" component={OrderListScreen}></SellerRoute>
         <Route path="/" component={HomeScreen} exact></Route>
