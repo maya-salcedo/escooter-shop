@@ -1,3 +1,5 @@
+import http from 'http';
+import SocketIO from 'socket.io';
 import express from 'express'; 
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
@@ -39,6 +41,60 @@ app.use((err, req, res, next) => {
 
 const port = process.env.PORT || 5000;
 
-app.listen(port, () => {
-  console.log(`Serve at http://localhost:${port}`);
+const httpServer = http.Server(app);
+const io = SocketIO(httpServer);
+
+io.on('connection', (socket) => {
+  socket.on('disconnect', () => {
+    const user = users.find((x) => x.socketId === socket.id);
+    if (user) {
+      user.online = false;
+      console.log('Offline', user.name);
+      const admin = users.find((x) => x.isAdmin && x.online);
+      if (admin) {
+        io.to(admin.socketId).emit('updateUser', user);
+      }
+    }
+  });
+  socket.on('onLogin', (user) => {
+    const updatedUser = {
+      ...user,
+      online: true,
+      socketId: socket.id,
+      messages: []
+    };
+    const existUser = users.find((x) => x._id === updatedUser._id);
+    if (existUser) {
+      existUser.socketId = socket.id;
+      existUser.online = true;
+    } else {
+      users.push(updatedUser);
+    }
+    console.log('Online', user.name);
+    const admin = users.find((x) => x.isAdmin && x.online);
+    if (admin) {
+      io.to(admin.socketId).emit('updateUser', updatedUser);
+    }
+    if (updatedUser.isAdmin) {
+      io.to(updatedUser.socketId).emit('listUsers', users)
+    }
+  });
+  socket.on('onUserSelected', (user) => {
+    const admin = users.find((x) => x.isAdmin && x.online);
+    if (admin) {
+      const existUser = users.find((x) => x._id === user._id);
+      io.to(admin.socketId).emit('selectUser', existUser);
+    }
+  });
+  socket.on('onMessage', (message) => {
+    if (message.isAdmin) {
+      const user = users.find((x) => x._id === message._id && x.online);
+    }
+  });
 });
+
+
+
+// app.listen(port, () => {
+//   console.log(`Serve at http://localhost:${port}`);
+// });
