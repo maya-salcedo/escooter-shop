@@ -29,49 +29,49 @@ const SupportScreen = () => {
         left: 0,
         behavior: 'smooth'
       });
-      if (!socket) {
-        const sk = socketIOClient(ENDPOINT);
-        setSocket(sk);
-        sk.emit('onLogin', {
-          _id: userInfo._id,
-          name: userInfo.name,
-          isAdmin: userInfo.isAdmin
-        });
-        sk.on('message', (data) => {
-          if (allSelectedUser._id === data._id) {
-            allMessages = [...allMessages, data];
-          } else {
-            const existUser = allUsers.find((user) => user._id === data._id);
-            if (existUser) {
-              allUsers = allUsers.map((user) => 
-              user._id === existUser._id ? { ...user, unread: true } : user 
-              );
-              setUsers(allUsers);
-            }
-          }
-          setMessages(allMessages);
-        });
-        sk.on('updateUser', (updatedUser) => {
-          const existUser = allUsers.find((user) => user._id === updatedUser._id);
+    }
+    if (!socket) {
+      const sk = socketIOClient(ENDPOINT);
+      setSocket(sk);
+      sk.emit('onLogin', {
+        _id: userInfo._id,
+        name: userInfo.name,
+        isAdmin: userInfo.isAdmin
+      });
+      sk.on('message', (data) => {
+        if (allSelectedUser._id === data._id) {
+          allMessages = [...allMessages, data];
+        } else {
+          const existUser = allUsers.find((user) => user._id === data._id);
           if (existUser) {
             allUsers = allUsers.map((user) => 
-            user._id === existUser._id ? updatedUser : user
+            user._id === existUser._id ? { ...user, unread: true } : user 
             );
             setUsers(allUsers);
-          } else {
-            allUsers = [...allUsers, updatedUser];
-            setUsers(allUsers);
           }
-        });
-        sk.on('listUsers', (updatedUser) => {
-          allUsers = updatedUser;
+        }
+        setMessages(allMessages);
+      });
+      sk.on('updateUser', (updatedUser) => {
+        const existUser = allUsers.find((user) => user._id === updatedUser._id);
+        if (existUser) {
+          allUsers = allUsers.map((user) => 
+          user._id === existUser._id ? updatedUser : user
+          );
           setUsers(allUsers);
-        });
-        sk.on('selectUser', (user) => {
-          allMessages = user.messages;
-          setMessages(allMessages);
-        })
-      }
+        } else {
+          allUsers = [...allUsers, updatedUser];
+          setUsers(allUsers);
+        }
+      });
+      sk.on('listUsers', (updatedUser) => {
+        allUsers = updatedUser;
+        setUsers(allUsers);
+      });
+      sk.on('selectUser', (user) => {
+        allMessages = user.messages;
+        setMessages(allMessages);
+      })
     }
   }, [messages, socket, users]);
 
@@ -127,7 +127,7 @@ const SupportScreen = () => {
                 <button
                   className="block"
                   type="button"
-                  onClick={() => selectedUser(user)}
+                  onClick={() => selectUser(user)}
                 >
                  {user.name}
                 </button>

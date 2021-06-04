@@ -29,6 +29,7 @@ import LoadingBox from './components/LoadingBox';
 import MessageBox from './components/MessageBox';
 import DashboardScreen from './screens/DashboardScreen';
 import SupportScreen from './screens/SupportScreen';
+import ChatBox from './screens/ChatBox';
 
 const App = () => {
   const cart = useSelector(state => state.cart); //to get access to cart items from redux
@@ -179,7 +180,10 @@ const App = () => {
         <SellerRoute path="/orderlist/seller" component={OrderListScreen}></SellerRoute>
         <Route path="/" component={HomeScreen} exact></Route>
       </main>
-      <footer className="row center">All right reserved</footer>
+      <footer className="row center">
+        {userInfo && !userInfo.isAdmin && <ChatBox userInfo={userInfo}></ChatBox>}
+        <div className="row center">All right reserved</div>
+      </footer>
     </div>
     </BrowserRouter>  
   );
