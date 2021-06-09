@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import socketIOClient from 'socket.io-client';
 
-const ENDPOINT = 
+const ENDPOINT =
   window.location.host.indexOf('localhost') >= 0
     ? 'http://127.0.0.1:5000'
     : window.location.host;
@@ -13,7 +13,10 @@ const ChatBox = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [messageBody, setMessageBody] = useState('');
   const [messages, setMessages] = useState([
-    { name: 'Admin', body: 'Hello there, please ask your question.'}
+    {
+      name: 'Admin',
+      body: 'Hello there, please ask your question.',
+    },
   ]);
 
   useEffect(() => {
@@ -21,40 +24,52 @@ const ChatBox = (props) => {
       uiMessagesRef.current.scrollBy({
         top: uiMessagesRef.current.clientHeight,
         left: 0,
-        behavior: 'smooth'
+        behavior: 'smooth',
       });
     }
     if (socket) {
       socket.emit('onLogin', {
         _id: userInfo._id,
         name: userInfo.name,
-        isAdmin: userInfo.isAdmin
+        isAdmin: userInfo.isAdmin,
       });
       socket.on('message', (data) => {
-        setMessages([ ...messages, { body: data.body, name: data.name }]);
+        setMessages([
+          ...messages,
+          {
+            body: data.body,
+            name: data.name,
+          },
+        ]);
       });
     }
-  }, [messages, isOpen, socket]);
+  }, [messages, isOpen, socket, userInfo._id, userInfo.name, userInfo.isAdmin]);
 
   const supportHandler = () => {
     setIsOpen(true);
     const sk = socketIOClient(ENDPOINT);
     setSocket(sk);
-  }
+  };
 
   const submitHandler = (e) => {
     e.preventDefault();
     if (!messageBody.trim()) {
       alert('Error. Please type message.');
     } else {
-      setMessages([ ...messages, { body: messageBody, name: userInfo.name }]);
+      setMessages([
+        ...messages,
+        {
+          body: messageBody,
+          name: userInfo.name,
+        },
+      ]);
       setMessageBody('');
       setTimeout(() => {
-        socket.emit('onMessage', {
+        socket.emit('onMessage ', {
           body: messageBody,
           name: userInfo.name,
           isAdmin: userInfo.isAdmin,
-          _id: userInfo._id
+          _id: userInfo._id,
         });
       }, 1000);
     }
@@ -64,8 +79,9 @@ const ChatBox = (props) => {
     setIsOpen(false);
   };
 
-  return(
+  return (
     <div className="chatbox">
+      {' '}
       {!isOpen ? (
         <button type="button" onClick={supportHandler}>
           <i className="fa fa-support" />
@@ -73,36 +89,34 @@ const ChatBox = (props) => {
       ) : (
         <div className="card card-body">
           <div className="row">
-            <strong>Support</strong>
-            <button type="button" onClick={closeHandler}>
+            <strong> Support </strong>{' '}
+            <button type=" button" onClick={closeHandler}>
               <i className="fa fa-close" />
-            </button>
-          </div>
+            </button>{' '}
+          </div>{' '}
           <ul ref={uiMessagesRef}>
-            {messages.map((msg, index ) => (
+            {' '}
+            {messages.map((msg, index) => (
               <li key={index}>
-                <strong>{`${msg.name}: `}</strong> {msg.body}
+                <strong> {`${msg.name}: `} </strong> {msg.body}{' '}
               </li>
-            ))}
-          </ul>
+            ))}{' '}
+          </ul>{' '}
           <div>
             <form onSubmit={submitHandler} className="row">
-              <input 
+              <input
                 value={messageBody}
                 onChange={(e) => setMessageBody(e.target.value)}
                 type="text"
                 placeholder="type message"
               />
-              <button type="submit">Send</button>
-            </form>
-          </div>
+              <button type="submit"> Send </button>{' '}
+            </form>{' '}
+          </div>{' '}
         </div>
-      )
-
-      }
-
+      )}{' '}
     </div>
   );
-}
+};
 
 export default ChatBox;
