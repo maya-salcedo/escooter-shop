@@ -24,14 +24,13 @@ import SellerRoute from './components/SellerRoute';
 import SellerScreen from './screens/SellerScreen';
 import SearchBox from './components/SearchBox';
 import SearchScreen from './screens/SearchScreen';
-import { listProductCategories } from './actions/productActions';
-import LoadingBox from './components/LoadingBox';
-import MessageBox from './components/MessageBox';
 import DashboardScreen from './screens/DashboardScreen';
 import SupportScreen from './screens/SupportScreen';
 import ChatBox from './screens/ChatBox';
 
 const App = () => {
+  const [isDesktop, setDesktop] = useState(window.innerWidth > 850);
+  const [isMobile, setMobile] = useState(window.innerWidth < 585);
   const cart = useSelector((state) => state.cart); //to get access to cart items from redux
   const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
   const { cartItems } = cart;
@@ -41,22 +40,30 @@ const App = () => {
   const signoutHandler = () => {
     dispatch(signout());
   };
-
+  const updateMedia = () => {
+    setDesktop(window.innerWidth > 850);
+    setMobile(window.innerWidth < 585);
+  };
   useEffect(() => {
-    dispatch(listProductCategories());
-  }, [dispatch]);
+    window.addEventListener('resize', updateMedia);
+    return () => window.removeEventListener('resize', updateMedia);
+  }, []);
   return (
     <BrowserRouter>
       <div className="grid-container">
         <header className="row">
+          {!isDesktop && (
+            <div>
+              <button
+                type="button"
+                className="open-sidebar"
+                onClick={() => setSidebarIsOpen(true)}
+              >
+                <i className="fa fa-bars"></i>
+              </button>
+            </div>
+          )}
           <div>
-            <button
-              type="button"
-              className="open-sidebar"
-              onClick={() => setSidebarIsOpen(true)}
-            >
-              <i className="fa fa-bars"></i>
-            </button>
             <Link className="brand" to="/">
               escooterlane shop
             </Link>
@@ -68,80 +75,83 @@ const App = () => {
               )}
             ></Route>
           </div>
-          <div>
-            <Link to="/cart">
-              Cart
-              {cartItems.length > 0 && (
-                <span className="badge">{cartItems.length}</span>
-              )}
-            </Link>
-            {userInfo ? (
-              <div className="dropdown">
-                <Link to="#">
-                  {userInfo.name} <i className="fa fa-caret-down"></i>
+          {isDesktop && (
+            <>
+              <div>
+                <Link to="/cart">
+                  Cart
+                  {cartItems.length > 0 && (
+                    <span className="badge">{cartItems.length}</span>
+                  )}
                 </Link>
-                <ul className="dropdown-content">
-                  <li>
-                    <Link to="/profile">User Profile</Link>
-                  </li>
-                  <li>
-                    <Link to="/orderhistory">Order History</Link>
-                  </li>
-                  <li>
-                    <Link to="#signout" onClick={signoutHandler}>
-                      Sign Out
+                {userInfo ? (
+                  <div className="dropdown">
+                    <Link to="#">
+                      {userInfo.name} <i className="fa fa-caret-down"></i>
                     </Link>
-                  </li>
-                </ul>
+                    <ul className="dropdown-content">
+                      <li>
+                        <Link to="/profile">User Profile</Link>
+                      </li>
+                      <li>
+                        <Link to="/orderhistory">Order History</Link>
+                      </li>
+                      <li>
+                        <Link to="#signout" onClick={signoutHandler}>
+                          Sign Out
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                ) : (
+                  <Link to="/signin">Sign In</Link>
+                )}
+                {userInfo && userInfo.isSeller && (
+                  <div className="dropdown">
+                    <Link to="#admin">
+                      Seller <i className="fa fa-caret-down"></i>
+                    </Link>
+                    <ul className="dropdown-content">
+                      <li>
+                        <Link to="/productlist/seller">Products</Link>
+                      </li>
+                      <li>
+                        <Link to="/orderlist/seller">Orders</Link>
+                      </li>
+                    </ul>
+                  </div>
+                )}
+                {userInfo && userInfo.isAdmin && (
+                  <div className="dropdown">
+                    <Link to="#admin">
+                      Admin <i className="fa fa-caret-down"></i>
+                    </Link>
+                    <ul className="dropdown-content">
+                      <li>
+                        <Link to="/dashboard">Dashboard</Link>
+                      </li>
+                      <li>
+                        <Link to="/productlist">Products</Link>
+                      </li>
+                      <li>
+                        <Link to="/orderlist">Orders</Link>
+                      </li>
+                      <li>
+                        <Link to="/userlist">Users</Link>
+                      </li>
+                      <li>
+                        <Link to="/support">Support</Link>
+                      </li>
+                    </ul>
+                  </div>
+                )}
               </div>
-            ) : (
-              <Link to="/signin">Sign In</Link>
-            )}
-            {userInfo && userInfo.isSeller && (
-              <div className="dropdown">
-                <Link to="#admin">
-                  Seller <i className="fa fa-caret-down"></i>
-                </Link>
-                <ul className="dropdown-content">
-                  <li>
-                    <Link to="/productlist/seller">Products</Link>
-                  </li>
-                  <li>
-                    <Link to="/orderlist/seller">Orders</Link>
-                  </li>
-                </ul>
-              </div>
-            )}
-            {userInfo && userInfo.isAdmin && (
-              <div className="dropdown">
-                <Link to="#admin">
-                  Admin <i className="fa fa-caret-down"></i>
-                </Link>
-                <ul className="dropdown-content">
-                  <li>
-                    <Link to="/dashboard">Dashboard</Link>
-                  </li>
-                  <li>
-                    <Link to="/productlist">Products</Link>
-                  </li>
-                  <li>
-                    <Link to="/orderlist">Orders</Link>
-                  </li>
-                  <li>
-                    <Link to="/userlist">Users</Link>
-                  </li>
-                  <li>
-                    <Link to="/support">Support</Link>
-                  </li>
-                </ul>
-              </div>
-            )}
-          </div>
+            </>
+          )}
         </header>
         <aside className={sidebarIsOpen ? 'open' : ''}>
           <ul className="categories" onClick={() => setSidebarIsOpen(false)}>
             <li>
-              {/* <strong>Categories</strong> */}
               <button
                 onClick={() => setSidebarIsOpen(false)}
                 className="close-sidebar"

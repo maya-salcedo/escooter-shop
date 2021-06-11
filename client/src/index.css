@@ -28,6 +28,8 @@ body {
 header {
   grid-area: header;
   background-color: #144d53;
+  height: fit-content;
+  padding: 0.6rem;
 }
 main {
   grid-area: main;
@@ -465,4 +467,23 @@ img.large {
 }
 .support-users .unread {
   background-color: #f02020;
+}
+
+/*Screen responsive*/
+
+@media screen and (max-width: 585px) {
+  a.brand {
+    font-size: 2rem;
+    padding: 0.2rem 1rem;
+  }
+}
+
+@media screen and (max-width: 585px) {
+  input#q {
+    height: 2rem;
+    padding: 0.2rem;
+  }
+  button#button-mobile {
+    padding: 0.2rem;
+  }
 }
