@@ -30,8 +30,6 @@ body {
 header {
   grid-area: header;
   background-color: #144d53;
-  height: fit-content;
-  padding: 0.6rem;
 }
 main {
   grid-area: main;

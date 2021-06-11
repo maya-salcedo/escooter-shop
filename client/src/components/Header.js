@@ -1,8 +1,21 @@
 import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Route } from 'react-router-dom';
 import { signout } from '../actions/userActions';
 import SearchBox from './SearchBox';
+
+const BurgerWrapper = styled.div`
+  > button {
+    font-size: 3rem;
+    padding: 0.2rem 0.5rem;
+    margin: 0 0.5rem;
+    background: none;
+    color: #ffffff;
+    cursor: pointer;
+    border: none;
+  }
+`;
 
 const Header = () => {
   const cart = useSelector((state) => state.cart); //to get access to cart items from redux
@@ -29,16 +42,16 @@ const Header = () => {
   return (
     <>
       <header className="row">
-        {!isDesktop && (
-          <div>
+        {isDesktop && (
+          <BurgerWrapper>
             <button
               type="button"
-              className="open-sidebar"
+              className="sidebar"
               onClick={() => setSidebarIsOpen(true)}
             >
-              <i className="fa fa-bars"></i>
+              <i className="fa fa-bars" aria-hidden="true"></i>
             </button>
-          </div>
+          </BurgerWrapper>
         )}
         <div>
           <Link className="brand" to="/">
