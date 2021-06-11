@@ -126,10 +126,10 @@ a.brand {
 .row.start {
   justify-content: flex-start;
 }
-.col-1{
+.col-1 {
   flex: 1 1 25rem;
 }
-.col-2{
+.col-2 {
   flex: 2 1 50rem;
 }
 .col-3 {
@@ -151,6 +151,8 @@ aside {
   z-index: 1000;
   transform: translateX(-30rem);
   transition: all 0.5s;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 aside.open {
   transform: translateX(0);
@@ -174,6 +176,7 @@ aside li {
   display: flex;
   justify-content: space-between;
   padding: 1rem;
+  /* margin: 0; */
 }
 button.close-sidebar {
   padding: 0.3rem 0.8rem;
@@ -267,7 +270,6 @@ img.large {
 
 .form label {
   margin: 1rem 0;
-
 }
 
 /* Dropdown */
@@ -304,7 +306,7 @@ img.large {
 
 .checkout-steps > div.active {
   border-top-color: #f08000;
-  color: #f08000
+  color: #f08000;
 }
 
 /* Table */
@@ -346,7 +348,7 @@ img.large {
   margin-left: 0.5rem;
 }
 
-.active { 
+.active {
   font-weight: bold;
 }
 
