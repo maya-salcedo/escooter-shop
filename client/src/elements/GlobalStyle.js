@@ -20,7 +20,6 @@ body {
 .grid-container {
   display: grid;
   grid-template-areas:
-
     'main'
 ;
   grid-template-columns: 1fr;

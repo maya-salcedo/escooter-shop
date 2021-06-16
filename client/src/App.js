@@ -114,13 +114,13 @@ const App = () => {
           ></SellerRoute>
           <Route path="/" component={HomeScreen} exact></Route>
         </main>
-        <footer className="row center">
-          {userInfo && !userInfo.isAdmin && (
-            <ChatBox userInfo={userInfo}></ChatBox>
-          )}
-          <div className="row center">All right reserved</div>
-        </footer>
       </div>
+      <footer className="row center">
+        {userInfo && !userInfo.isAdmin && (
+          <ChatBox userInfo={userInfo}></ChatBox>
+        )}
+        <div className="row center">All right reserved</div>
+      </footer>
     </BrowserRouter>
   );
 };
