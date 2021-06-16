@@ -20,17 +20,20 @@ body {
 .grid-container {
   display: grid;
   grid-template-areas:
-    'header'
+
     'main'
-    'footer';
+;
   grid-template-columns: 1fr;
   grid-template-rows: 5rem 1fr 5rem;
   height: 100%;
 }
+/**/
 header {
   grid-area: header;
   background-color: #144d53;
 }
+
+/**/
 main {
   grid-area: main;
   padding: 1rem;

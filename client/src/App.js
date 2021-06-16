@@ -27,6 +27,7 @@ import DashboardScreen from './screens/DashboardScreen';
 import SupportScreen from './screens/SupportScreen';
 import ChatBox from './screens/ChatBox';
 import Header from './components/Header';
+import Header2 from './components/Header2';
 
 const App = () => {
   const userSignin = useSelector((state) => state.userSignin);
@@ -34,8 +35,10 @@ const App = () => {
   return (
     <BrowserRouter>
       <GlobalStyle />
+
+      <Header />
+      <Header2 />
       <div className="grid-container">
-        <Header />
         <main>
           <Route path="/seller/:id" component={SellerScreen}></Route>
           <Route path="/cart/:id?" component={CartScreen}></Route>
