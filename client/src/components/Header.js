@@ -17,10 +17,10 @@ const BurgerWrapper = styled.div`
   }
 `;
 
-const Header = () => {
+const Header = (props) => {
   const cart = useSelector((state) => state.cart); //to get access to cart items from redux
   const [isDesktop, setDesktop] = useState(window.innerWidth > 850);
-  const [isMobile, setMobile] = useState(window.innerWidth < 585);
+  const [isMobile, setMobile] = useState(window.innerWidth < 650);
   const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
   const { cartItems } = cart;
 
@@ -33,7 +33,7 @@ const Header = () => {
   };
   const updateMedia = () => {
     setDesktop(window.innerWidth > 850);
-    setMobile(window.innerWidth < 585);
+    setMobile(window.innerWidth < 650);
   };
   useEffect(() => {
     window.addEventListener('resize', updateMedia);
@@ -58,11 +58,15 @@ const Header = () => {
             escooterlane shop
           </Link>
         </div>
-        <div>
-          <Route
-            render={({ history }) => <SearchBox history={history}></SearchBox>}
-          ></Route>
-        </div>
+        {!isMobile && (
+          <div>
+            <Route
+              render={({ history }) => (
+                <SearchBox history={history}></SearchBox>
+              )}
+            ></Route>
+          </div>
+        )}
         <Link to="/cart">
           <i class="fa fa-shopping-cart basket"></i>
           {cartItems.length > 0 && (

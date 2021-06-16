@@ -3,10 +3,11 @@ import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Route } from 'react-router-dom';
 import { signout } from '../actions/userActions';
+import SearchBox from './SearchBox';
 
-const Header2 = () => {
+const Header2 = (props) => {
   const [isDesktop, setDesktop] = useState(window.innerWidth > 850);
-  const [isMobile, setMobile] = useState(window.innerWidth < 585);
+  const [isMobile, setMobile] = useState(window.innerWidth < 650);
 
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
@@ -17,7 +18,7 @@ const Header2 = () => {
   };
   const updateMedia = () => {
     setDesktop(window.innerWidth > 850);
-    setMobile(window.innerWidth < 585);
+    setMobile(window.innerWidth < 650);
   };
   useEffect(() => {
     window.addEventListener('resize', updateMedia);
@@ -88,6 +89,13 @@ const Header2 = () => {
               </ul>
             </div>
           )}
+        </div>
+      )}
+      {isMobile && (
+        <div>
+          <Route
+            render={({ history }) => <SearchBox history={history}></SearchBox>}
+          ></Route>
         </div>
       )}
     </header>

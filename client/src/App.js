@@ -35,7 +35,6 @@ const App = () => {
   return (
     <BrowserRouter>
       <GlobalStyle />
-
       <Header />
       <Header2 />
       <div className="grid-container">
