@@ -63,15 +63,15 @@ const Header = () => {
             render={({ history }) => <SearchBox history={history}></SearchBox>}
           ></Route>
         </div>
+        <Link to="/cart">
+          <i class="fa fa-shopping-cart basket"></i>
+          {cartItems.length > 0 && (
+            <span className="badge">{cartItems.length}</span>
+          )}
+        </Link>
         {isDesktop && (
           <>
             <div>
-              <Link to="/cart">
-                Cart
-                {cartItems.length > 0 && (
-                  <span className="badge">{cartItems.length}</span>
-                )}
-              </Link>
               {userInfo ? (
                 <div className="dropdown">
                   <Link to="#">
