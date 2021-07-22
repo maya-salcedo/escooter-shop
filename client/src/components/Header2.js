@@ -5,6 +5,16 @@ import { Link, Route } from 'react-router-dom';
 import { signout } from '../actions/userActions';
 import SearchBox from './SearchBox';
 
+const ContainerWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+  > div {
+    flex: 0 0 auto;
+    margin: 0.2rem;
+  }
+`;
+
 const Header2 = (props) => {
   const [isDesktop, setDesktop] = useState(window.innerWidth > 850);
   const [isMobile, setMobile] = useState(window.innerWidth < 650);
@@ -27,7 +37,7 @@ const Header2 = (props) => {
   return (
     <header>
       {isDesktop && (
-        <div>
+        <ContainerWrapper>
           {userInfo ? (
             <div className="dropdown">
               <Link to="#">
@@ -89,7 +99,7 @@ const Header2 = (props) => {
               </ul>
             </div>
           )}
-        </div>
+        </ContainerWrapper>
       )}
       {isMobile && (
         <div>
