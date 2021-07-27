@@ -8,13 +8,12 @@
 .pnp.js
 .eslintrc.js
 
-
-
 # testing
 /coverage
 
 # production
 /build
+build
 
 # misc
 .DS_Store
@@ -28,5 +27,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-frontend/package-lock.jso
+package-lock.json
+frontend/package-lock.json
+
+/uploads/*.jpg
 
