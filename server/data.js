@@ -6,14 +6,14 @@ const data = {
       name: 'Maya',
       email: 'maya@email.com',
       password: bcrypt.hashSync('1234', 8),
-      isAdmin: true
+      isAdmin: true,
     },
     {
       name: 'Susi',
       email: 'susi@email.com',
       password: bcrypt.hashSync('1234', 8),
-      isAdmin: false
-    }
+      isAdmin: false,
+    },
   ],
   products: [
     {
@@ -55,7 +55,7 @@ const data = {
       image: '/images/p4.jpg',
       price: 5500,
       countInStock: 5,
-      brand: 'Nike',
+      brand: 'Zero',
       rating: 4.5,
       numReviews: 14,
       description: 'high quality product',
@@ -85,4 +85,4 @@ const data = {
   ],
 };
 
-  export default data;
+export default data;
