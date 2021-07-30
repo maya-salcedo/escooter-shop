@@ -55,7 +55,7 @@ const Header = (props) => {
         )}
         <div>
           <Link className="brand" to="/">
-            escooterlane shop
+            escooter shop
           </Link>
         </div>
         {!isMobile && (
