@@ -17,7 +17,8 @@ body {
   height: 100%;
 }
 /* Layout */
-.grid-container {
+${
+  '' /* .grid-container {
   display: grid;
   grid-template-areas:
     'main'
@@ -25,25 +26,19 @@ body {
   grid-template-columns: 1fr;
   grid-template-rows: 5rem 1fr 5rem;
   height: 100%;
+} */
 }
 /**/
 header {
-  grid-area: header;
   background-color: #144d53;
 }
 
 /**/
 main {
-  grid-area: main;
   padding: 1rem;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-}
-footer {
-  grid-area: footer;
-  background-color: #144d53;
-  color: #ffffff;
 }
 /* Common */
 h1 {

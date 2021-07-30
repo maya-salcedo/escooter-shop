@@ -9,6 +9,8 @@ const FooterWrapper = styled.footer`
   justify-content: space-between;
   align-items: center;
   justify-content: center;
+  background-color: #144d53;
+  color: #ffffff;
 `;
 
 const Footer = () => {
