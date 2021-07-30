@@ -25,13 +25,12 @@ import SellerScreen from './screens/SellerScreen';
 import SearchScreen from './screens/SearchScreen';
 import DashboardScreen from './screens/DashboardScreen';
 import SupportScreen from './screens/SupportScreen';
-import ChatBox from './screens/ChatBox';
 import Header from './components/Header';
 import Header2 from './components/Header2';
+import Footer from './components/Footer';
 
 const App = () => {
   const userSignin = useSelector((state) => state.userSignin);
-  const { userInfo } = userSignin;
   return (
     <BrowserRouter>
       <GlobalStyle />
@@ -106,12 +105,7 @@ const App = () => {
         ></SellerRoute>
         <Route path="/" component={HomeScreen} exact></Route>
       </main>
-      <footer className="row center">
-        {userInfo && !userInfo.isAdmin && (
-          <ChatBox userInfo={userInfo}></ChatBox>
-        )}
-        <div className="row center">All right reserved</div>
-      </footer>
+      <Footer />
     </BrowserRouter>
   );
 };
