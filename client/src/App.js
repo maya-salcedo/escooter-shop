@@ -37,83 +37,75 @@ const App = () => {
       <GlobalStyle />
       <Header />
       <Header2 />
-      <div className="grid-container">
-        <main>
-          <Route path="/seller/:id" component={SellerScreen}></Route>
-          <Route path="/cart/:id?" component={CartScreen}></Route>
-          <Route path="/product/:id" component={ProductScreen} exact></Route>
-          <Route
-            path="/product/:id/edit"
-            component={ProductEditScreen}
-            exact
-          ></Route>
-          <Route path="/signin" component={SigninScreen}></Route>
-          <Route path="/register" component={RegisterScreen}></Route>
-          <Route path="/shipping" component={ShippingAddressScreen}></Route>
-          <Route path="/payment" component={PaymentMethodScreen}></Route>
-          <Route path="/placeorder" component={PlaceOrderScreen}></Route>
-          <Route path="/order/:id" component={OrderScreen}></Route>
-          <Route path="/orderhistory" component={OrderHistoryScreen}></Route>
-          <Route
-            path="/search/name/:name?"
-            component={SearchScreen}
-            exact
-          ></Route>
-          <Route
-            path="/search/category/:category"
-            component={SearchScreen}
-            exact
-          ></Route>
-          <Route
-            path="/search/category/:category/name/:name"
-            component={SearchScreen}
-            exact
-          ></Route>
-          <Route
-            path="/search/category/:category/name/:name/min/:min/max/:max/rating/:rating/order/:order/pageNumber/:pageNumber"
-            component={SearchScreen}
-            exact
-          ></Route>
-          <PrivateRoute
-            path="/profile"
-            component={ProfileScreen}
-          ></PrivateRoute>
-          <AdminRoute
-            path="/productlist"
-            component={ProductListScreen}
-            exact
-          ></AdminRoute>
-          <AdminRoute
-            path="/productlist/pageNumber/:pageNumber"
-            component={ProductListScreen}
-            exact
-          ></AdminRoute>
-          <AdminRoute
-            path="/orderlist"
-            component={OrderListScreen}
-            exact
-          ></AdminRoute>
-          <AdminRoute path="/userList" component={UserListScreen}></AdminRoute>
-          <AdminRoute
-            path="/user/:id/edit"
-            component={UserEditScreen}
-          ></AdminRoute>
-          <AdminRoute
-            path="/dashboard"
-            component={DashboardScreen}
-          ></AdminRoute>
-          <AdminRoute path="/support" component={SupportScreen}></AdminRoute>
-          <SellerRoute
-            path="/productlist/seller"
-            component={ProductListScreen}
-          ></SellerRoute>
-          <SellerRoute
-            path="/orderlist/seller"
-            component={OrderListScreen}
-          ></SellerRoute>
-          <Route path="/" component={HomeScreen} exact></Route>
-        </main>
-      </div>
+      <main>
+        <Route path="/seller/:id" component={SellerScreen}></Route>
+        <Route path="/cart/:id?" component={CartScreen}></Route>
+        <Route path="/product/:id" component={ProductScreen} exact></Route>
+        <Route
+          path="/product/:id/edit"
+          component={ProductEditScreen}
+          exact
+        ></Route>
+        <Route path="/signin" component={SigninScreen}></Route>
+        <Route path="/register" component={RegisterScreen}></Route>
+        <Route path="/shipping" component={ShippingAddressScreen}></Route>
+        <Route path="/payment" component={PaymentMethodScreen}></Route>
+        <Route path="/placeorder" component={PlaceOrderScreen}></Route>
+        <Route path="/order/:id" component={OrderScreen}></Route>
+        <Route path="/orderhistory" component={OrderHistoryScreen}></Route>
+        <Route
+          path="/search/name/:name?"
+          component={SearchScreen}
+          exact
+        ></Route>
+        <Route
+          path="/search/category/:category"
+          component={SearchScreen}
+          exact
+        ></Route>
+        <Route
+          path="/search/category/:category/name/:name"
+          component={SearchScreen}
+          exact
+        ></Route>
+        <Route
+          path="/search/category/:category/name/:name/min/:min/max/:max/rating/:rating/order/:order/pageNumber/:pageNumber"
+          component={SearchScreen}
+          exact
+        ></Route>
+        <PrivateRoute path="/profile" component={ProfileScreen}></PrivateRoute>
+        <AdminRoute
+          path="/productlist"
+          component={ProductListScreen}
+          exact
+        ></AdminRoute>
+        <AdminRoute
+          path="/productlist/pageNumber/:pageNumber"
+          component={ProductListScreen}
+          exact
+        ></AdminRoute>
+        <AdminRoute
+          path="/orderlist"
+          component={OrderListScreen}
+          exact
+        ></AdminRoute>
+        <AdminRoute path="/userList" component={UserListScreen}></AdminRoute>
+        <AdminRoute
+          path="/user/:id/edit"
+          component={UserEditScreen}
+        ></AdminRoute>
+        <AdminRoute path="/dashboard" component={DashboardScreen}></AdminRoute>
+        <AdminRoute path="/support" component={SupportScreen}></AdminRoute>
+        <SellerRoute
+          path="/productlist/seller"
+          component={ProductListScreen}
+        ></SellerRoute>
+        <SellerRoute
+          path="/orderlist/seller"
+          component={OrderListScreen}
+        ></SellerRoute>
+        <Route path="/" component={HomeScreen} exact></Route>
+      </main>
       <footer className="row center">
         {userInfo && !userInfo.isAdmin && (
           <ChatBox userInfo={userInfo}></ChatBox>
