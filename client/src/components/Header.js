@@ -5,6 +5,14 @@ import { Link, Route } from 'react-router-dom';
 import { signout } from '../actions/userActions';
 import SearchBox from './SearchBox';
 
+const HeaderWrapper = styled.header`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #144d53;
+`;
+
 const BurgerWrapper = styled.div`
   > button {
     font-size: 3rem;
@@ -41,7 +49,7 @@ const Header = (props) => {
   }, []);
   return (
     <>
-      <header className="row">
+      <HeaderWrapper>
         {!isDesktop && (
           <BurgerWrapper>
             <button
@@ -73,7 +81,7 @@ const Header = (props) => {
             <span className="badge">{cartItems.length}</span>
           )}
         </Link>
-      </header>
+      </HeaderWrapper>
       <aside className={sidebarIsOpen ? 'open' : ''}>
         <ul className="categories" onClick={() => setSidebarIsOpen(false)}>
           <li>

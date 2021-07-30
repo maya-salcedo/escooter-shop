@@ -29,11 +29,7 @@ ${
 } */
 }
 /**/
-header {
-  background-color: #144d53;
-}
 
-/**/
 main {
   padding: 1rem;
   min-height: 100vh;

@@ -5,6 +5,10 @@ import { Link, Route } from 'react-router-dom';
 import { signout } from '../actions/userActions';
 import SearchBox from './SearchBox';
 
+const Header2Wrapper = styled.header`
+  background-color: #144d53;
+`;
+
 const ContainerWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -35,7 +39,7 @@ const Header2 = (props) => {
     return () => window.removeEventListener('resize', updateMedia);
   }, []);
   return (
-    <header>
+    <Header2Wrapper>
       {isDesktop && (
         <ContainerWrapper>
           {userInfo ? (
@@ -108,7 +112,7 @@ const Header2 = (props) => {
           ></Route>
         </div>
       )}
-    </header>
+    </Header2Wrapper>
   );
 };
 
