@@ -16,19 +16,6 @@ body {
 #root {
   height: 100%;
 }
-/* Layout */
-${
-  '' /* .grid-container {
-  display: grid;
-  grid-template-areas:
-    'main'
-;
-  grid-template-columns: 1fr;
-  grid-template-rows: 5rem 1fr 5rem;
-  height: 100%;
-} */
-}
-/**/
 
 main {
   padding: 1rem;
