@@ -36,6 +36,9 @@ header {
 main {
   grid-area: main;
   padding: 1rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 footer {
   grid-area: footer;
