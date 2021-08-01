@@ -375,16 +375,6 @@ img.large {
   }
 }
 
-@media screen and (max-width: 585px) {
-  input#q {
-    height: 2rem;
-    padding: 0.2rem;
-  }
-  button#button-mobile {
-    padding: 0.2rem;
-  }
-}
-
 .basket {
   font-size: 150%;
 }
