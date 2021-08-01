@@ -1,13 +1,33 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
+
+const FormWrapper = styled.form`
+  > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    > button {
+      border-radius: 0 0.5rem 0.5rem 0;
+      border-right: none;
+      margin-right: 0.5rem;
+    }
+    > input {
+      border-radius: 0.5rem 0 0 0.5rem;
+      border-right: none;
+      margin-left: 0.5rem;
+    }
+  }
+`;
 
 const SearchBox = (props) => {
   const [name, setName] = useState('');
   const submitHandler = (e) => {
     e.preventDefault();
     props.history.push(`/search/name/${name}`);
-  }
-  return(
-    <form className="search" onSubmit={submitHandler}>
+  };
+  return (
+    <FormWrapper onSubmit={submitHandler}>
       <div className="row">
         <input
           type="text"
@@ -19,7 +39,7 @@ const SearchBox = (props) => {
           <i className="fa fa-search"></i>
         </button>
       </div>
-    </form>
+    </FormWrapper>
   );
 };
 
