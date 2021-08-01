@@ -11,6 +11,7 @@ const FormWrapper = styled.form`
       border-radius: 0 0.5rem 0.5rem 0;
       border-right: none;
       margin-right: 0.5rem;
+      background-color: #f0c040;
     }
     > input {
       border-radius: 0.5rem 0 0 0.5rem;
@@ -37,7 +38,7 @@ const SearchBox = (props) => {
           placeholder="Search products"
           onChange={(e) => setName(e.target.value)}
         ></input>
-        <button className="primary" type="submit">
+        <button type="submit">
           <i className="fa fa-search"></i>
         </button>
       </div>
