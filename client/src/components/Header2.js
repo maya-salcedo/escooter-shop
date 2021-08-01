@@ -7,6 +7,7 @@ import SearchBox from './SearchBox';
 
 const Header2Wrapper = styled.header`
   background-color: #144d53;
+  padding: 0 0.5rem 0.5rem;
 `;
 
 const ContainerWrapper = styled.div`

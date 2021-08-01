@@ -11,11 +11,17 @@ const HeaderWrapper = styled.header`
   justify-content: space-between;
   align-items: center;
   background-color: #144d53;
+  padding: 0.5rem;
   > div {
     > a {
       @media (max-width: 320px) {
+        font-size: 2.5rem;
+      }
+      @media (max-width: 290px) {
+        font-size: 2.2rem;
+      }
+      @media (max-width: 270px) {
         font-size: 2rem;
-        padding: 0.2rem 1rem;
       }
     }
   }
