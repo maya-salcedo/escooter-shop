@@ -16,6 +16,7 @@ const FormWrapper = styled.form`
       border-radius: 0.5rem 0 0 0.5rem;
       border-right: none;
       margin-left: 0.5rem;
+      flex-grow: 2;
     }
   }
 `;
