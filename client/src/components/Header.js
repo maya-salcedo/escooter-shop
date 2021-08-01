@@ -11,6 +11,14 @@ const HeaderWrapper = styled.header`
   justify-content: space-between;
   align-items: center;
   background-color: #144d53;
+  > div {
+    > a {
+      @media (max-width: 320px) {
+        font-size: 2rem;
+        padding: 0.2rem 1rem;
+      }
+    }
+  }
 `;
 
 const BurgerWrapper = styled.div`

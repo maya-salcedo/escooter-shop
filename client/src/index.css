@@ -368,12 +368,12 @@ img.large {
 
 /*Screen responsive*/
 
-@media screen and (max-width: 585px) {
+/* @media screen and (max-width: 585px) {
   a.brand {
     font-size: 2rem;
     padding: 0.2rem 1rem;
   }
-}
+} */
 
 .basket {
   font-size: 150%;
