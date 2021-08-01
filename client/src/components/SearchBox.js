@@ -30,7 +30,7 @@ const SearchBox = (props) => {
   };
   return (
     <FormWrapper onSubmit={submitHandler}>
-      <div className="row">
+      <div>
         <input
           type="text"
           name="q"
