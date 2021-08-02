@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
@@ -16,6 +16,7 @@ import {
 } from '../constants/productConstants';
 
 const ProductListScreen = (props) => {
+  const [isMobile, setMobile] = useState(window.innerWidth < 650);
   const { pageNumber = 1 } = useParams();
   const sellerMode = props.match.path.indexOf('/seller') >= 0;
   const productList = useSelector((state) => state.productList);
@@ -40,6 +41,10 @@ const ProductListScreen = (props) => {
   const { userInfo } = userSignin;
 
   const dispatch = useDispatch();
+
+  const updateMedia = () => {
+    setMobile(window.innerWidth < 650);
+  };
   useEffect(() => {
     if (successCreate) {
       dispatch({ type: PRODUCT_CREATE_RESET });
@@ -51,6 +56,8 @@ const ProductListScreen = (props) => {
     dispatch(
       listProducts({ seller: sellerMode ? userInfo._id : '', pageNumber })
     );
+    window.addEventListener('resize', updateMedia);
+    return () => window.removeEventListener('resize', updateMedia);
   }, [
     createdProduct,
     dispatch,
@@ -130,17 +137,20 @@ const ProductListScreen = (props) => {
               ))}
             </tbody>
           </table>
-
-          {products.map((product) => (
-            <table key={product._id}>
-              <MobileRow title="ID" tableData={product._id} />
-              <MobileRow title="NAME" tableData={product.name} />
-              <MobileRow title="PRICE" tableData={product.price} />
-              <MobileRow title="CATEGORY" tableData={product.category} />
-              <MobileRow title="BRAND" tableData={product.brand} />
-              <MobileRow title="ACTIONS" />
-            </table>
-          ))}
+          {isMobile && (
+            <>
+              {products.map((product) => (
+                <table key={product._id}>
+                  <MobileRow title="ID" tableData={product._id} />
+                  <MobileRow title="NAME" tableData={product.name} />
+                  <MobileRow title="PRICE" tableData={product.price} />
+                  <MobileRow title="CATEGORY" tableData={product.category} />
+                  <MobileRow title="BRAND" tableData={product.brand} />
+                  <MobileRow title="ACTIONS" />
+                </table>
+              ))}
+            </>
+          )}
 
           <div className="row center pagination">
             {[...Array(pages).keys()].map((x) => (
