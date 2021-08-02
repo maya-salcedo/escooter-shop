@@ -6,12 +6,17 @@ import ChatBox from '../screens/ChatBox';
 const FooterWrapper = styled.footer`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
   justify-content: center;
   background-color: #144d53;
   color: #ffffff;
+  height: 3rem;
+  > div {
+    display: flex;
+    align-items: center;
+  }
 `;
+
+const year = new Date().getFullYear();
 
 const Footer = () => {
   const userSignin = useSelector((state) => state.userSignin);
@@ -19,7 +24,7 @@ const Footer = () => {
   return (
     <FooterWrapper>
       {userInfo && !userInfo.isAdmin && <ChatBox userInfo={userInfo}></ChatBox>}
-      <div className="row center">All right reserved</div>
+      <div>escooter shop © {year}</div>
     </FooterWrapper>
   );
 };
