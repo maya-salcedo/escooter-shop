@@ -3,7 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { listOrderMine } from '../actions/orderActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
-import TableWrapper, { MobileRow } from '../elements/TableWrapper';
+import TableWrapper, {
+  ButtonWrapper,
+  MobileRow,
+  RowWithButton,
+} from '../elements/TableWrapper';
 
 const OrderHistoryScreen = (props) => {
   const [isMobile, setMobile] = useState(window.innerWidth < 650);
@@ -98,7 +102,14 @@ const OrderHistoryScreen = (props) => {
                         : 'No'
                     }
                   />
-                  <MobileRow title="ACTIONS" />
+                  <RowWithButton title="ACTIONS">
+                    <ButtonWrapper
+                      onClick={() => {
+                        props.history.push(`/order/${order._id}`);
+                      }}
+                      text="Details"
+                    />
+                  </RowWithButton>
                 </TableWrapper>
               ))}
             </>
