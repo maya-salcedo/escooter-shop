@@ -9,7 +9,11 @@ import {
 } from '../actions/productActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
-import TableWrapper, { MobileRow } from '../elements/TableWrapper';
+import TableWrapper, {
+  ButtonWrapper,
+  MobileRow,
+  RowWithButton,
+} from '../elements/TableWrapper';
 
 import {
   PRODUCT_CREATE_RESET,
@@ -151,12 +155,21 @@ const ProductListScreen = (props) => {
                   <MobileRow title="PRICE" tableData={product.price} />
                   <MobileRow title="CATEGORY" tableData={product.category} />
                   <MobileRow title="BRAND" tableData={product.brand} />
-                  <MobileRow title="ACTIONS" />
+                  <RowWithButton title="ACTIONS" />
+                  <ButtonWrapper
+                    onClick={() =>
+                      props.history.push(`/product/${product._id}/edit`)
+                    }
+                    text="Edit"
+                  />
+                  <ButtonWrapper
+                    onClick={() => deleteHandler(product)}
+                    text="Delete"
+                  />
                 </TableWrapper>
               ))}
             </>
           )}
-
           <div className="row center pagination">
             {[...Array(pages).keys()].map((x) => (
               <Link

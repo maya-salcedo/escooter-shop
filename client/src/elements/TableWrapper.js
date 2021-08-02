@@ -37,4 +37,21 @@ export const MobileRow = ({ title, tableData = [] }) => {
   );
 };
 
+export const ButtonWrapper = ({ onClick, text }) => {
+  return (
+    <button type="button" className="small" onClick={onClick}>
+      {text}
+    </button>
+  );
+};
+
+export const RowWithButton = ({ title, children }) => {
+  return (
+    <StyledRow>
+      <th>{title}</th>
+      <td>{children}</td>
+    </StyledRow>
+  );
+};
+
 export default TableWrapper;
