@@ -102,7 +102,6 @@ const OrderListScreen = (props) => {
           )}
           {isMobile && (
             <>
-              {' '}
               {orders.map((order) => (
                 <TableWrapper key={order._id}>
                   <MobileRow title="ID" tableData={order._id} />
