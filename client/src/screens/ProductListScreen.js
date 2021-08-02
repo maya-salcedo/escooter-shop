@@ -9,7 +9,7 @@ import {
 } from '../actions/productActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
-import MobileRow from '../components/MobileRow';
+import MobileRow, { TableWrapper } from '../components/MobileRow';
 import {
   PRODUCT_CREATE_RESET,
   PRODUCT_DELETE_RESET,
@@ -144,14 +144,14 @@ const ProductListScreen = (props) => {
           {isMobile && (
             <>
               {products.map((product) => (
-                <table key={product._id}>
+                <TableWrapper key={product._id}>
                   <MobileRow title="ID" tableData={product._id} />
                   <MobileRow title="NAME" tableData={product.name} />
                   <MobileRow title="PRICE" tableData={product.price} />
                   <MobileRow title="CATEGORY" tableData={product.category} />
                   <MobileRow title="BRAND" tableData={product.brand} />
                   <MobileRow title="ACTIONS" />
-                </table>
+                </TableWrapper>
               ))}
             </>
           )}
