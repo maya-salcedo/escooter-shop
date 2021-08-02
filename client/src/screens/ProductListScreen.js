@@ -9,6 +9,7 @@ import {
 } from '../actions/productActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
+import MobileRow from '../components/MobileRow';
 import {
   PRODUCT_CREATE_RESET,
   PRODUCT_DELETE_RESET,
@@ -132,42 +133,12 @@ const ProductListScreen = (props) => {
 
           {products.map((product) => (
             <table key={product._id}>
-              <thead>
-                <th>ID</th>
-              </thead>
-              <tbody>
-                <td>{product._id}</td>
-              </tbody>
-              <thead>
-                <th>NAME</th>
-              </thead>
-              <tbody>
-                <td>{product.name}</td>
-              </tbody>
-              <thead>
-                <th>PRICE</th>
-              </thead>
-              <tbody>
-                <td>{product.price}</td>
-              </tbody>
-              <thead>
-                <th>CATEGORY</th>
-              </thead>
-              <tbody>
-                <td>{product.category}</td>
-              </tbody>
-              <thead>
-                <th>BRAND</th>
-              </thead>
-              <tbody>
-                <td>{product.brand}</td>
-              </tbody>
-              <thead>
-                <th>ACTIONS</th>
-              </thead>
-              <tbody>
-                <td>Delete</td>
-              </tbody>
+              <MobileRow title="ID" tableData={product._id} />
+              <MobileRow title="NAME" tableData={product.name} />
+              <MobileRow title="PRICE" tableData={product.price} />
+              <MobileRow title="CATEGORY" tableData={product.category} />
+              <MobileRow title="BRAND" tableData={product.brand} />
+              <MobileRow title="ACTIONS" />
             </table>
           ))}
 
