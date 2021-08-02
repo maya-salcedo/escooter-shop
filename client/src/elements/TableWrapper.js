@@ -24,11 +24,11 @@ const StyledRow = styled.tr`
     word-wrap: break-word;
   }
 `;
-export const TableWrapper = ({ key, children = [] }) => {
+const TableWrapper = ({ key, children = [] }) => {
   return <StyledTable key={key}>{children}</StyledTable>;
 };
 
-const MobileRow = ({ title, tableData = [] }) => {
+export const MobileRow = ({ title, tableData = [] }) => {
   return (
     <StyledRow>
       <th>{title}</th>
@@ -37,4 +37,4 @@ const MobileRow = ({ title, tableData = [] }) => {
   );
 };
 
-export default MobileRow;
+export default TableWrapper;

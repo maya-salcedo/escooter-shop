@@ -9,7 +9,8 @@ import {
 } from '../actions/productActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
-import MobileRow, { TableWrapper } from '../components/MobileRow';
+import TableWrapper, { MobileRow } from '../elements/TableWrapper';
+
 import {
   PRODUCT_CREATE_RESET,
   PRODUCT_DELETE_RESET,
