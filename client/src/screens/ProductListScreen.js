@@ -155,17 +155,18 @@ const ProductListScreen = (props) => {
                   <MobileRow title="PRICE" tableData={product.price} />
                   <MobileRow title="CATEGORY" tableData={product.category} />
                   <MobileRow title="BRAND" tableData={product.brand} />
-                  <RowWithButton title="ACTIONS" />
-                  <ButtonWrapper
-                    onClick={() =>
-                      props.history.push(`/product/${product._id}/edit`)
-                    }
-                    text="Edit"
-                  />
-                  <ButtonWrapper
-                    onClick={() => deleteHandler(product)}
-                    text="Delete"
-                  />
+                  <RowWithButton title="ACTIONS">
+                    <ButtonWrapper
+                      onClick={() =>
+                        props.history.push(`/product/${product._id}/edit`)
+                      }
+                      text="Edit"
+                    />
+                    <ButtonWrapper
+                      onClick={() => deleteHandler(product)}
+                      text="Delete"
+                    />
+                  </RowWithButton>
                 </TableWrapper>
               ))}
             </>

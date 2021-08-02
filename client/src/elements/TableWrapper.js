@@ -24,6 +24,11 @@ const StyledRow = styled.tr`
     word-wrap: break-word;
   }
 `;
+
+const StyledButton = styled.button`
+  margin: 0.3rem;
+  padding: 0.6rem;
+`;
 const TableWrapper = ({ key, children = [] }) => {
   return <StyledTable key={key}>{children}</StyledTable>;
 };
@@ -39,9 +44,9 @@ export const MobileRow = ({ title, tableData = [] }) => {
 
 export const ButtonWrapper = ({ onClick, text }) => {
   return (
-    <button type="button" className="small" onClick={onClick}>
+    <StyledButton type="button" onClick={onClick}>
       {text}
-    </button>
+    </StyledButton>
   );
 };
 
