@@ -4,7 +4,11 @@ import { deleteUser, listUsers } from '../actions/userActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { USER_DETAILS_RESET } from '../constants/userConstants';
-import TableWrapper, { MobileRow } from '../elements/TableWrapper';
+import TableWrapper, {
+  ButtonWrapper,
+  MobileRow,
+  RowWithButton,
+} from '../elements/TableWrapper';
 
 const UserListScreen = (props) => {
   const [isMobile, setMobile] = useState(window.innerWidth < 650);
@@ -108,7 +112,18 @@ const UserListScreen = (props) => {
                     title="IS ADMIN"
                     tableData={user.isAdmin ? 'YES' : 'NO'}
                   />
-                  <MobileRow title="ACTIONS" />
+                  <RowWithButton title="ACTIONS">
+                    <ButtonWrapper
+                      onClick={() =>
+                        props.history.push(`/user/${user._id}/edit`)
+                      }
+                      text="Edit"
+                    />
+                    <ButtonWrapper
+                      onClick={() => deleteHandler(user)}
+                      text="Delete"
+                    />
+                  </RowWithButton>
                 </TableWrapper>
               ))}
             </>
