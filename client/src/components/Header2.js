@@ -14,14 +14,32 @@ const ContainerWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-direction: row-reverse;
-  > div {
-    flex: 0 0 auto;
-    margin: 0.2rem;
+`;
+
+const UserWrapper = styled.div`
+  flex: 0 0 auto;
+  margin: 0.2rem;
+  display: inline-block;
+  position: relative;
+`;
+
+const DropdownWrapper = styled.ul`
+  position: absolute;
+  display: none;
+  right: 0;
+  min-width: 12rem;
+  padding: 1rem;
+  z-index: 1;
+  background-color: #144d53;
+  margin: 0;
+  margin-top: 0.4rem;
+  border-radius: 0.5rem;
+  ${UserWrapper}:hover & {
+    display: block;
   }
 `;
 
 const Header2 = (props) => {
-  const [isDesktop, setDesktop] = useState(window.innerWidth > 850);
   const [isMobile, setMobile] = useState(window.innerWidth < 650);
 
   const userSignin = useSelector((state) => state.userSignin);
@@ -32,7 +50,6 @@ const Header2 = (props) => {
     dispatch(signout());
   };
   const updateMedia = () => {
-    setDesktop(window.innerWidth > 850);
     setMobile(window.innerWidth < 650);
   };
   useEffect(() => {
@@ -41,14 +58,14 @@ const Header2 = (props) => {
   }, []);
   return (
     <Header2Wrapper>
-      {isDesktop && (
+      {!isMobile && (
         <ContainerWrapper>
           {userInfo ? (
-            <div className="dropdown">
+            <UserWrapper>
               <Link to="#">
                 {userInfo.name} <i className="fa fa-caret-down"></i>
               </Link>
-              <ul className="dropdown-content">
+              <DropdownWrapper>
                 <li>
                   <Link to="/profile">User Profile</Link>
                 </li>
@@ -60,32 +77,32 @@ const Header2 = (props) => {
                     Sign Out
                   </Link>
                 </li>
-              </ul>
-            </div>
+              </DropdownWrapper>
+            </UserWrapper>
           ) : (
             <Link to="/signin">Sign In</Link>
           )}
           {userInfo && userInfo.isSeller && (
-            <div className="dropdown">
+            <UserWrapper>
               <Link to="#admin">
                 Seller <i className="fa fa-caret-down"></i>
               </Link>
-              <ul className="dropdown-content">
+              <DropdownWrapper>
                 <li>
                   <Link to="/productlist/seller">Products</Link>
                 </li>
                 <li>
                   <Link to="/orderlist/seller">Orders</Link>
                 </li>
-              </ul>
-            </div>
+              </DropdownWrapper>
+            </UserWrapper>
           )}
           {userInfo && userInfo.isAdmin && (
-            <div className="dropdown">
+            <UserWrapper>
               <Link to="#admin">
                 Admin <i className="fa fa-caret-down"></i>
               </Link>
-              <ul className="dropdown-content">
+              <DropdownWrapper>
                 <li>
                   <Link to="/dashboard">Dashboard</Link>
                 </li>
@@ -101,8 +118,8 @@ const Header2 = (props) => {
                 <li>
                   <Link to="/support">Support</Link>
                 </li>
-              </ul>
-            </div>
+              </DropdownWrapper>
+            </UserWrapper>
           )}
         </ContainerWrapper>
       )}

@@ -1,11 +1,15 @@
 import React from 'react';
+import styled from 'styled-components';
 
+const ContainerWrapper = styled.div`
+  display: block;
+`;
 const LoadingBox = () => {
-  return(
-    <div className="loading">
+  return (
+    <ContainerWrapper>
       <i className="fa fa-spinner fa-spin"></i> Loading ...
-    </div>
-  )
-}
+    </ContainerWrapper>
+  );
+};
 
 export default LoadingBox;

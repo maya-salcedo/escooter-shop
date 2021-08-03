@@ -24,24 +24,58 @@ const HeaderWrapper = styled.header`
         font-size: 2rem;
       }
     }
+    > button {
+      font-size: 3rem;
+      padding: 0.2rem 0.5rem;
+      margin: 0 0.5rem;
+      background: none;
+      color: #ffffff;
+      cursor: pointer;
+      border: none;
+      :hover {
+        color: #f0c040;
+        border: none;
+      }
+    }
   }
 `;
 
-const BurgerWrapper = styled.div`
-  > button {
-    font-size: 3rem;
-    padding: 0.2rem 0.5rem;
-    margin: 0 0.5rem;
-    background: none;
-    color: #ffffff;
-    cursor: pointer;
-    border: none;
+const BadgeWrapper = styled.span`
+  background-color: #ce1212;
+  color: #ffffff;
+  border-radius: 50%;
+  padding: 0.2rem 0.7rem;
+  font-size: 1.4rem;
+  margin-left: 0.2rem;
+`;
+
+const AsideWrapper = styled.aside`
+  position: fixed;
+  width: 20rem;
+  height: 100%;
+  background-color: #efefef;
+  z-index: 1000;
+  transform: translateX(-30rem);
+  transition: all 0.5s;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 1rem;
+  > ul {
+    padding: 0;
+    list-style: none;
+  }
+  > li {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    > button {
+      padding: 0.3rem 0.8rem;
+    }
   }
 `;
 
 const Header = (props) => {
   const cart = useSelector((state) => state.cart); //to get access to cart items from redux
-  const [isDesktop, setDesktop] = useState(window.innerWidth > 850);
   const [isMobile, setMobile] = useState(window.innerWidth < 650);
   const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
   const { cartItems } = cart;
@@ -54,7 +88,6 @@ const Header = (props) => {
     dispatch(signout());
   };
   const updateMedia = () => {
-    setDesktop(window.innerWidth > 850);
     setMobile(window.innerWidth < 650);
   };
   useEffect(() => {
@@ -64,16 +97,12 @@ const Header = (props) => {
   return (
     <>
       <HeaderWrapper>
-        {!isDesktop && (
-          <BurgerWrapper>
-            <button
-              type="button"
-              className="sidebar"
-              onClick={() => setSidebarIsOpen(true)}
-            >
+        {isMobile && (
+          <div>
+            <button type="button" onClick={() => setSidebarIsOpen(true)}>
               <i className="fa fa-bars" aria-hidden="true"></i>
             </button>
-          </BurgerWrapper>
+          </div>
         )}
         <div>
           <Link className="brand" to="/">
@@ -92,18 +121,14 @@ const Header = (props) => {
         <Link to="/cart">
           <i class="fa fa-shopping-cart basket"></i>
           {cartItems.length > 0 && (
-            <span className="badge">{cartItems.length}</span>
+            <BadgeWrapper>{cartItems.length}</BadgeWrapper>
           )}
         </Link>
       </HeaderWrapper>
-      <aside className={sidebarIsOpen ? 'open' : ''}>
-        <ul className="categories" onClick={() => setSidebarIsOpen(false)}>
+      <AsideWrapper className={sidebarIsOpen ? 'open' : ''}>
+        <ul onClick={() => setSidebarIsOpen(false)}>
           <li>
-            <button
-              onClick={() => setSidebarIsOpen(false)}
-              className="close-sidebar"
-              type="button"
-            >
+            <button onClick={() => setSidebarIsOpen(false)} type="button">
               <i className="fa fa-close"></i>
             </button>
           </li>
@@ -111,7 +136,7 @@ const Header = (props) => {
             <Link to="/cart">
               Cart
               {cartItems.length > 0 && (
-                <span className="badge">{cartItems.length}</span>
+                <BadgeWrapper>{cartItems.length}</BadgeWrapper>
               )}
             </Link>
           </li>
@@ -170,7 +195,7 @@ const Header = (props) => {
             </li>
           )}
         </ul>
-      </aside>
+      </AsideWrapper>
     </>
   );
 };
