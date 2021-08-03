@@ -8,14 +8,7 @@ a.brand {
   font-size: 3rem;
   font-weight: bold;
 }
-.badge {
-  background-color: #ce1212;
-  color: #ffffff;
-  border-radius: 50%;
-  padding: 0.2rem 0.7rem;
-  font-size: 1.4rem;
-  margin-left: 0.2rem;
-}
+
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -47,39 +40,11 @@ a.brand {
   padding: 1rem;
 }
 
-/* Aside */
-aside {
-  position: fixed;
-  width: 30rem;
-  height: 100%;
-  background-color: #efefef;
-  z-index: 1000;
-  transform: translateX(-30rem);
-  transition: all 0.5s;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-aside.open {
-  transform: translateX(0);
-}
-
-button.sidebar:hover {
+/* button.sidebar:hover {
   color: #f0c040;
   border: none;
-}
-aside ul {
-  padding: 0;
-  list-style: none;
-}
-aside li {
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem;
-  /* margin: 0; */
-}
-button.close-sidebar {
-  padding: 0.3rem 0.8rem;
-}
+} */
+
 /* Image */
 img {
   border-radius: 0.5rem;
@@ -366,7 +331,12 @@ img.large {
   background-color: #f02020;
 }
 
-/*Screen responsive*/
+/* keep */
+
+/* Aside */
+aside.open {
+  transform: translateX(0);
+}
 
 .basket {
   font-size: 150%;
