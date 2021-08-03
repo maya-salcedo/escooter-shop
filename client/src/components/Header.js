@@ -40,18 +40,6 @@ const HeaderWrapper = styled.header`
   }
 `;
 
-// const BurgerWrapper = styled.div`
-//   > button {
-//     font-size: 3rem;
-//     padding: 0.2rem 0.5rem;
-//     margin: 0 0.5rem;
-//     background: none;
-//     color: #ffffff;
-//     cursor: pointer;
-//     border: none;
-//   }
-// `;
-
 const BadgeWrapper = styled.span`
   background-color: #ce1212;
   color: #ffffff;
