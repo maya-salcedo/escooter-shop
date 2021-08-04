@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
@@ -19,6 +20,15 @@ import {
   PRODUCT_CREATE_RESET,
   PRODUCT_DELETE_RESET,
 } from '../constants/productConstants';
+import YellowButtonWrapper from '../elements/YellowButtonWrapper';
+import DesktopTableWrapper from '../elements/DesktopTableWrapper';
+
+const Container = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+`;
 
 const ProductListScreen = (props) => {
   const [isMobile, setMobile] = useState(window.innerWidth < 650);
@@ -84,12 +94,13 @@ const ProductListScreen = (props) => {
   };
   return (
     <div>
-      <div className="row">
+      <Container>
         <h1>Products</h1>
-        <button type="button" className="primary" onClick={createHandler}>
-          Create Product
-        </button>
-      </div>
+        <YellowButtonWrapper
+          onClick={createHandler}
+          text="Create Product"
+        ></YellowButtonWrapper>
+      </Container>
       {loadingDelete && <LoadingBox></LoadingBox>}
       {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
 
@@ -103,7 +114,7 @@ const ProductListScreen = (props) => {
         <>
           {!isMobile && (
             <>
-              <table className="table">
+              <DesktopTableWrapper>
                 <thead>
                   <tr>
                     <th>ID</th>
@@ -143,7 +154,7 @@ const ProductListScreen = (props) => {
                     </tr>
                   ))}
                 </tbody>
-              </table>
+              </DesktopTableWrapper>
             </>
           )}
           {isMobile && (

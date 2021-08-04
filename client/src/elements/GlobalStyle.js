@@ -75,8 +75,9 @@ ${
 }
 button.block {
   width: 100%;
-} */
+}  */
 }
+
 ${
   '' /* button.small {
   font-size: 1.2rem;
