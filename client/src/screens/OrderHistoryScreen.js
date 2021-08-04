@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { listOrderMine } from '../actions/orderActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
+import DesktopTableWrapper from '../elements/DesktopTableWrapper';
 import MobileTableWrapper, {
   ButtonWrapper,
   MobileRow,
@@ -34,7 +34,7 @@ const OrderHistoryScreen = (props) => {
         <>
           {!isMobile && (
             <>
-              <table className="table">
+              <DesktopTableWrapper>
                 <thead>
                   <tr>
                     <th>ID</th>
@@ -62,7 +62,6 @@ const OrderHistoryScreen = (props) => {
                       <td>
                         <button
                           type="button"
-                          className="small"
                           onClick={() => {
                             props.history.push(`/order/${order._id}`);
                           }}
@@ -73,7 +72,7 @@ const OrderHistoryScreen = (props) => {
                     </tr>
                   ))}
                 </tbody>
-              </table>
+              </DesktopTableWrapper>
             </>
           )}
           {isMobile && (
