@@ -4,6 +4,7 @@ import { deleteOrder, listOrders } from '../actions/orderActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { ORDER_DELETE_RESET } from '../constants/orderConstants';
+import DesktopTableWrapper from '../elements/DesktopTableWrapper';
 import MobileTableWrapper, {
   ButtonWrapper,
   MobileRow,
@@ -53,7 +54,7 @@ const OrderListScreen = (props) => {
         <>
           {!isMobile && (
             <>
-              <table className="table">
+              <DesktopTableWrapper>
                 <thead>
                   <tr>
                     <th>ID</th>
@@ -83,7 +84,6 @@ const OrderListScreen = (props) => {
                       <td>
                         <button
                           type="button"
-                          className="small"
                           onClick={() => {
                             props.history.push(`/order/${order._id}`);
                           }}
@@ -92,7 +92,6 @@ const OrderListScreen = (props) => {
                         </button>
                         <button
                           type="button"
-                          className="small"
                           onClick={() => deleteHandler(order)}
                         >
                           Delete
@@ -101,7 +100,7 @@ const OrderListScreen = (props) => {
                     </tr>
                   ))}
                 </tbody>
-              </table>
+              </DesktopTableWrapper>
             </>
           )}
           {isMobile && (
