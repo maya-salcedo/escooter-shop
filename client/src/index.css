@@ -235,7 +235,7 @@ img.large {
 
 /* Dashboard */
 
-.summary > li {
+/* .summary > li {
   border: 0.1rem #c0c0c0 solid;
   margin: 2rem;
   border-radius: 0.5rem;
@@ -258,7 +258,7 @@ img.large {
 }
 .summary-title.color3 {
   background-color: #e0e0f0;
-}
+} */
 
 /* Chatbox */
 .chatbox {
