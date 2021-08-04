@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { listOrderMine } from '../actions/orderActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
-import TableWrapper, {
+import MobileTableWrapper, {
   ButtonWrapper,
   MobileRow,
   RowWithButton,
-} from '../elements/TableWrapper';
+} from '../elements/MobileTableWrapper';
 
 const OrderHistoryScreen = (props) => {
   const [isMobile, setMobile] = useState(window.innerWidth < 650);
@@ -78,7 +79,7 @@ const OrderHistoryScreen = (props) => {
           {isMobile && (
             <>
               {orders.map((order) => (
-                <TableWrapper key={order._id}>
+                <MobileTableWrapper key={order._id}>
                   <MobileRow title="ID" tableData={order._id} />
                   <MobileRow
                     title="DATE"
@@ -110,7 +111,7 @@ const OrderHistoryScreen = (props) => {
                       text="Details"
                     />
                   </RowWithButton>
-                </TableWrapper>
+                </MobileTableWrapper>
               ))}
             </>
           )}

@@ -9,11 +9,11 @@ import {
 } from '../actions/productActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
-import TableWrapper, {
+import MobileTableWrapper, {
   ButtonWrapper,
   MobileRow,
   RowWithButton,
-} from '../elements/TableWrapper';
+} from '../elements/MobileTableWrapper';
 
 import {
   PRODUCT_CREATE_RESET,
@@ -149,7 +149,7 @@ const ProductListScreen = (props) => {
           {isMobile && (
             <>
               {products.map((product) => (
-                <TableWrapper key={product._id}>
+                <MobileTableWrapper key={product._id}>
                   <MobileRow title="ID" tableData={product._id} />
                   <MobileRow title="NAME" tableData={product.name} />
                   <MobileRow title="PRICE" tableData={product.price} />
@@ -167,7 +167,7 @@ const ProductListScreen = (props) => {
                       text="Delete"
                     />
                   </RowWithButton>
-                </TableWrapper>
+                </MobileTableWrapper>
               ))}
             </>
           )}

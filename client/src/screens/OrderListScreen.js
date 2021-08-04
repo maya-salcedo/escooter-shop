@@ -4,11 +4,11 @@ import { deleteOrder, listOrders } from '../actions/orderActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { ORDER_DELETE_RESET } from '../constants/orderConstants';
-import TableWrapper, {
+import MobileTableWrapper, {
   ButtonWrapper,
   MobileRow,
   RowWithButton,
-} from '../elements/TableWrapper';
+} from '../elements/MobileTableWrapper';
 
 const OrderListScreen = (props) => {
   const [isMobile, setMobile] = useState(window.innerWidth < 650);
@@ -107,7 +107,7 @@ const OrderListScreen = (props) => {
           {isMobile && (
             <>
               {orders.map((order) => (
-                <TableWrapper key={order._id}>
+                <MobileTableWrapper key={order._id}>
                   <MobileRow title="ID" tableData={order._id} />
                   <MobileRow title="USER" tableData={order.user.name} />
                   <MobileRow
@@ -142,7 +142,7 @@ const OrderListScreen = (props) => {
                       text="Delete"
                     />
                   </RowWithButton>
-                </TableWrapper>
+                </MobileTableWrapper>
               ))}
             </>
           )}

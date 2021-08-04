@@ -4,11 +4,12 @@ import { deleteUser, listUsers } from '../actions/userActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { USER_DETAILS_RESET } from '../constants/userConstants';
-import TableWrapper, {
+import DesktopTableWrapper from '../elements/DesktopTableWrapper';
+import MobileTableWrapper, {
   ButtonWrapper,
   MobileRow,
   RowWithButton,
-} from '../elements/TableWrapper';
+} from '../elements/MobileTableWrapper';
 
 const UserListScreen = (props) => {
   const [isMobile, setMobile] = useState(window.innerWidth < 650);
@@ -54,7 +55,7 @@ const UserListScreen = (props) => {
         <>
           {!isMobile && (
             <>
-              <table className="table">
+              <DesktopTableWrapper>
                 <thead>
                   <tr>
                     <th>ID</th>
@@ -76,7 +77,6 @@ const UserListScreen = (props) => {
                       <td>
                         <button
                           type="button"
-                          className="small"
                           onClick={() =>
                             props.history.push(`/user/${user._id}/edit`)
                           }
@@ -94,13 +94,13 @@ const UserListScreen = (props) => {
                     </tr>
                   ))}
                 </tbody>
-              </table>
+              </DesktopTableWrapper>
             </>
           )}
           {isMobile && (
             <>
               {users.map((user) => (
-                <TableWrapper key={user._id}>
+                <MobileTableWrapper key={user._id}>
                   <MobileRow title="ID" tableData={user._id} />
                   <MobileRow title="NAME" tableData={user.name} />
                   <MobileRow title="EMAIL" tableData={user.email} />
@@ -124,7 +124,7 @@ const UserListScreen = (props) => {
                       text="Delete"
                     />
                   </RowWithButton>
-                </TableWrapper>
+                </MobileTableWrapper>
               ))}
             </>
           )}

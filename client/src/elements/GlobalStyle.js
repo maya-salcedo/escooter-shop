@@ -77,8 +77,10 @@ button.block {
   width: 100%;
 } */
 }
-button.small {
+${
+  '' /* button.small {
   font-size: 1.2rem;
+} */
 }
 `;
 export default GlobalStyle;

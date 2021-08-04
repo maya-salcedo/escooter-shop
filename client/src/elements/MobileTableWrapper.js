@@ -29,7 +29,7 @@ const StyledButton = styled.button`
   margin: 0.3rem;
   padding: 0.6rem;
 `;
-const TableWrapper = ({ key, children = [] }) => {
+const MobileTableWrapper = ({ key, children = [] }) => {
   return <StyledTable key={key}>{children}</StyledTable>;
 };
 
@@ -59,4 +59,4 @@ export const RowWithButton = ({ title, children }) => {
   );
 };
 
-export default TableWrapper;
+export default MobileTableWrapper;
