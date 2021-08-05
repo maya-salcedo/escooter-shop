@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Axios from "axios";
-import { detailsProduct, updateProduct } from "../actions/productActions";
-import LoadingBox from "../components/LoadingBox";
-import MessageBox from "../components/MessageBox";
-import { PRODUCT_UPDATE_RESET } from "../constants/productConstants";
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Axios from 'axios';
+import { detailsProduct, updateProduct } from '../actions/productActions';
+import LoadingBox from '../components/LoadingBox';
+import MessageBox from '../components/MessageBox';
+import { PRODUCT_UPDATE_RESET } from '../constants/productConstants';
+import FormWrapper from '../elements/FormWrapper ';
 
 const ProductEditScreen = (props) => {
   const productId = props.match.params.id;
@@ -16,11 +17,15 @@ const ProductEditScreen = (props) => {
   const [brand, setBrand] = useState('');
   const [description, setDescription] = useState('');
 
-  const productDetails = useSelector(state => state.productDetails);
+  const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
 
   const productUpdate = useSelector((state) => state.productUpdate);
-  const { loading: loadingUpdate, error: errorUpdate, success: successUpdate} = productUpdate;
+  const {
+    loading: loadingUpdate,
+    error: errorUpdate,
+    success: successUpdate,
+  } = productUpdate;
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -43,16 +48,18 @@ const ProductEditScreen = (props) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(updateProduct({
-      _id: productId,
-      name,
-      price,
-      image,
-      category,
-      brand,
-      countInStock,
-      description
-    }));
+    dispatch(
+      updateProduct({
+        _id: productId,
+        name,
+        price,
+        image,
+        category,
+        brand,
+        countInStock,
+        description,
+      })
+    );
   };
 
   const [loadingUpload, setLoadingUpload] = useState(false);
@@ -70,8 +77,8 @@ const ProductEditScreen = (props) => {
       const { data } = await Axios.post('/api/uploads', bodyFormData, {
         headers: {
           'Content-Type': 'multipart/form-data',
-          Authorization: `Bearer ${userInfo.token}`
-        }
+          Authorization: `Bearer ${userInfo.token}`,
+        },
       });
       setImage(data);
       setLoadingUpload(false);
@@ -83,13 +90,14 @@ const ProductEditScreen = (props) => {
 
   return (
     <div>
-      <form className="form" onSubmit={submitHandler}>
+      <FormWrapper onSubmit={submitHandler}>
         <div>
           <h1>Edit Product {productId}</h1>
         </div>
         {loadingUpdate && <LoadingBox></LoadingBox>}
         {errorUpdate && <MessageBox variant="danger">{errorUpdate}</MessageBox>}
-        {loading ? ( <LoadingBox></LoadingBox>
+        {loading ? (
+          <LoadingBox></LoadingBox>
         ) : error ? (
           <MessageBox variant="danger">{error}</MessageBox>
         ) : (
@@ -126,14 +134,16 @@ const ProductEditScreen = (props) => {
             </div>
             <div>
               <label htmlFor="imageFile">Image File</label>
-              <input 
-                type="file" 
-                id="imageFile" 
-                label="Choose Image" 
+              <input
+                type="file"
+                id="imageFile"
+                label="Choose Image"
                 onChange={uploadFileHandler}
               ></input>
               {loadingUpload && <LoadingBox></LoadingBox>}
-              {errorUpload && <MessageBox variant="danger">{errorUpload}</MessageBox>}
+              {errorUpload && (
+                <MessageBox variant="danger">{errorUpload}</MessageBox>
+              )}
             </div>
             <div>
               <label htmlFor="category">Category</label>
@@ -178,14 +188,13 @@ const ProductEditScreen = (props) => {
             </div>
             <div>
               <label></label>
-              <button className="primary" type="submit">Update</button>
+              <button type="submit">Update</button>
             </div>
           </>
-        )
-        }
-      </form>
+        )}
+      </FormWrapper>
     </div>
   );
-}
+};
 
 export default ProductEditScreen;
