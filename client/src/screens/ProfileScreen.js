@@ -151,9 +151,7 @@ const ProfileScreen = () => {
             )}
             <div>
               <label />
-              <button className="primary" type="submit">
-                Update
-              </button>
+              <button type="submit">Update</button>
             </div>
           </>
         )}
