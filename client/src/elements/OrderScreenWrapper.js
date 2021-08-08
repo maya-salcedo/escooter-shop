@@ -9,10 +9,6 @@ const StyledDiv = styled.div`
   > .column2 {
     flex: 2 1 50rem;
   }
-  & img {
-    max-width: 5rem;
-    width: 100%;
-  }
   > .column1 {
     flex: 1 1 25rem;
   }
@@ -28,8 +24,21 @@ const StyledDiv = styled.div`
   }
 `;
 
+const StyledImage = styled.img`
+  max-width: ${(props) => props.maxWidth};
+  width: 100%;
+`;
+
 const OrderScreenWrapper = ({ children }) => {
   return <StyledDiv>{children}</StyledDiv>;
+};
+
+export const ImageWrapper = ({ children, maxWidth, src, alt }) => {
+  return (
+    <StyledImage maxWidth={maxWidth} src={src} alt={alt}>
+      {children}
+    </StyledImage>
+  );
 };
 
 export const DetailWrapper = ({ children }) => {

@@ -12,6 +12,7 @@ import {
 } from '../constants/orderConstants';
 import OrderScreenWrapper, {
   DetailWrapper,
+  ImageWrapper,
 } from '../elements/OrderScreenWrapper';
 import YellowButtonWrapper from '../elements/YellowButtonWrapper';
 
@@ -128,7 +129,11 @@ const OrderScreen = (props) => {
                     <li key={item.product}>
                       <DetailWrapper>
                         <div>
-                          <img src={item.image} alt={item.name}></img>
+                          <ImageWrapper
+                            maxWidth="5rem"
+                            src={item.image}
+                            alt={item.name}
+                          ></ImageWrapper>
                         </div>
                         <div className="item">
                           <Link to={`/product/${item.product}`}>
