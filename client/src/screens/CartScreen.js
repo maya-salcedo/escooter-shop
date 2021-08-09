@@ -1,53 +1,14 @@
 import React, { useEffect } from 'react';
-import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addToCart, removeFromCart } from '../actions/cartActions';
 import MessageBox from '../components/MessageBox';
+import OrderScreenWrapper, {
+  DetailWrapper,
+  ImageWrapper,
+} from '../elements/OrderScreenWrapper';
+import YellowButtonWrapper from '../elements/YellowButtonWrapper';
 
-const CartScreenWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  align-items: flex-start;
-`;
-
-const ListWrapper = styled.div`
-  flex: 2 1 50rem;
-`;
-
-const DetailsWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const ImageWrapper = styled.img`
-  max-width: 5rem;
-  width: 100%;
-`;
-
-const ProductNameWrapper = styled.div`
-  min-width: 30rem;
-`;
-
-const CheckoutWrapper = styled.div`
-  flex: 1 1 25rem;
-  > div {
-    border: 0.1rem #c0c0c0 solid;
-    background-color: #f8f8f8;
-    border-radius: 0.5rem;
-    margin: 1rem;
-    padding: 1rem;
-  }
-`;
-
-const CheckoutButtonWrapper = styled.button`
-  background-color: #f0c040;
-  width: 100%;
-`;
 const CartScreen = (props) => {
   const productId = props.match.params.id;
   const qty = props.location.search
@@ -72,8 +33,8 @@ const CartScreen = (props) => {
   };
 
   return (
-    <CartScreenWrapper>
-      <ListWrapper>
+    <OrderScreenWrapper>
+      <div className="column2">
         <h1>Shopping Cart</h1>
         {error && <MessageBox variant="danger">{error}</MessageBox>}
         {cartItems.length === 0 ? (
@@ -84,16 +45,17 @@ const CartScreen = (props) => {
           <ul>
             {cartItems.map((item) => (
               <li key={item.product}>
-                <DetailsWrapper>
+                <DetailWrapper>
                   <div>
                     <ImageWrapper
+                      maxWidth="5rem"
                       src={item.image}
                       alt={item.name}
                     ></ImageWrapper>
                   </div>
-                  <ProductNameWrapper>
+                  <div className="item">
                     <Link to={`/product/${item.product}`}>{item.name}</Link>
-                  </ProductNameWrapper>
+                  </div>
                   <div>
                     <select
                       value={item.qty}
@@ -119,14 +81,14 @@ const CartScreen = (props) => {
                       Delete
                     </button>
                   </div>
-                </DetailsWrapper>
+                </DetailWrapper>
               </li>
             ))}
           </ul>
         )}
-      </ListWrapper>
-      <CheckoutWrapper>
-        <div>
+      </div>
+      <div className="column1">
+        <div className="container">
           <ul>
             <li>
               <h2>
@@ -135,18 +97,17 @@ const CartScreen = (props) => {
               </h2>
             </li>
             <li>
-              <CheckoutButtonWrapper
+              <YellowButtonWrapper
                 type="button"
                 onClick={checkoutHandler}
                 disabled={cartItems.length === 0}
-              >
-                Proceed to Checkout
-              </CheckoutButtonWrapper>
+                text="Proceed to Checkout"
+              ></YellowButtonWrapper>
             </li>
           </ul>
         </div>
-      </CheckoutWrapper>
-    </CartScreenWrapper>
+      </div>
+    </OrderScreenWrapper>
   );
 };
 

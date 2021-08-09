@@ -8,6 +8,7 @@ import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import OrderScreenWrapper, {
   DetailWrapper,
+  ImageWrapper,
 } from '../elements/OrderScreenWrapper';
 import YellowButtonWrapper from '../elements/YellowButtonWrapper';
 
@@ -68,7 +69,11 @@ const PlaceOrderScreen = (props) => {
                     <li key={item.product}>
                       <DetailWrapper>
                         <div>
-                          <img src={item.image} alt={item.name}></img>
+                          <ImageWrapper
+                            maxWidth="5rem"
+                            src={item.image}
+                            alt={item.name}
+                          ></ImageWrapper>
                         </div>
                         <div className="item">
                           <Link to={`/product/${item.product}`}>
@@ -102,12 +107,6 @@ const PlaceOrderScreen = (props) => {
                 <DetailWrapper>
                   <div>Shipping</div>
                   <div>€ {cart.shippingPrice.toFixed(2)}</div>
-                </DetailWrapper>
-              </li>
-              <li>
-                <DetailWrapper>
-                  <div>Tax</div>
-                  <div>(€ {cart.taxPrice.toFixed(2)})</div>
                 </DetailWrapper>
               </li>
               <li>

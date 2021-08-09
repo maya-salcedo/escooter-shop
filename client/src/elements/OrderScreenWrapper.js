@@ -42,7 +42,7 @@ export const ImageWrapper = ({ children, maxWidth, src, alt }) => {
 };
 
 export const DetailWrapper = ({ children }) => {
-  return <StyledDiv>{children}</StyledDiv>;
+  return <StyledDiv alignItems="center">{children}</StyledDiv>;
 };
 
 export default OrderScreenWrapper;
