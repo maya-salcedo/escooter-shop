@@ -69,14 +69,19 @@ textarea:hover,
 button:hover {
   border: 0.1rem #222831 solid;
 }
-button.primary {
+${
+  '' /* button.primary {
   background-color: #f0c040;
 }
 button.block {
   width: 100%;
+}  */
 }
-button.small {
+
+${
+  '' /* button.small {
   font-size: 1.2rem;
+} */
 }
 `;
 export default GlobalStyle;

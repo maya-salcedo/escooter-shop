@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { savePaymentMethod } from '../actions/cartActions';
 import CheckoutSteps from '../components/CheckoutSteps';
+import FormWrapper from '../elements/FormWrapper ';
 
 const PaymentMethodScreen = (props) => {
   const cart = useSelector((state) => state.cart);
@@ -14,12 +15,12 @@ const PaymentMethodScreen = (props) => {
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(savePaymentMethod(paymentMethod));
-    props.history.push('/placeorder')
-  }
-  return(
+    props.history.push('/placeorder');
+  };
+  return (
     <div>
       <CheckoutSteps step1 step2 step3></CheckoutSteps>
-      <form className="form" onSubmit={submitHandler}>
+      <FormWrapper onSubmit={submitHandler}>
         <div>
           <h1>Payment Method</h1>
         </div>
@@ -33,8 +34,7 @@ const PaymentMethodScreen = (props) => {
               required
               checked
               onChange={(e) => setPaymentMethod(e.target.value)}
-            >
-            </input>
+            ></input>
             <label htmlFor="paypal">PayPal</label>
           </div>
         </div>
@@ -47,18 +47,16 @@ const PaymentMethodScreen = (props) => {
               name="paymentMethod"
               required
               onChange={(e) => setPaymentMethod(e.target.value)}
-            >
-            </input>
+            ></input>
             <label htmlFor="stripe">Stripe</label>
           </div>
         </div>
         <div>
-          <button className="primary" type="submit">Continue</button>
+          <button type="submit">Continue</button>
         </div>
-
-      </form>
+      </FormWrapper>
     </div>
-  )
-}
+  );
+};
 
 export default PaymentMethodScreen;

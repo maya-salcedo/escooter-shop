@@ -62,7 +62,7 @@ img.large {
 }
 
 /* Card */
-/* .card {
+.card {
   border: 0.1rem #c0c0c0 solid;
   background-color: #f8f8f8;
   border-radius: 0.5rem;
@@ -76,7 +76,8 @@ img.large {
 }
 .price {
   font-size: 2rem;
-} */
+}
+*/
 /* Rating */
 .rating span {
   color: #f0c040;
@@ -121,7 +122,7 @@ img.large {
 }
 
 /* Form */
-.form {
+/* .form {
   max-width: 60rem;
   margin: 0 auto;
 }
@@ -134,7 +135,7 @@ img.large {
 
 .form label {
   margin: 1rem 0;
-}
+} */
 
 /* Dropdown
 .dropdown {
@@ -234,7 +235,7 @@ img.large {
 
 /* Dashboard */
 
-.summary > li {
+/* .summary > li {
   border: 0.1rem #c0c0c0 solid;
   margin: 2rem;
   border-radius: 0.5rem;
@@ -257,7 +258,7 @@ img.large {
 }
 .summary-title.color3 {
   background-color: #e0e0f0;
-}
+} */
 
 /* Chatbox */
 .chatbox {
