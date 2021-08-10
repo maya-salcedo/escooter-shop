@@ -140,7 +140,7 @@ const OrderScreen = (props) => {
                             {item.name}
                           </Link>
                         </div>
-                        <div>
+                        <div className="price">
                           {item.qty} x € {item.price} = €{item.qty * item.price}
                         </div>
                       </DetailWrapper>

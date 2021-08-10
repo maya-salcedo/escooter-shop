@@ -22,6 +22,11 @@ const StyledDiv = styled.div`
   & .item {
     min-width: 30rem;
   }
+  & .price {
+    min-width: 15rem;
+    font-size: 1.5rem;
+    text-align: right;
+  }
 `;
 
 const StyledImage = styled.img`
