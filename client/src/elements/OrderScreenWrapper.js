@@ -4,13 +4,16 @@ import styled from 'styled-components';
 const StyledDiv = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: ${(props) => props.justifyContent || 'space-between'};
   align-items: ${(props) => props.alignItems || 'flex - start'};
   > .column2 {
     flex: 2 1 50rem;
   }
   > .column1 {
     flex: 1 1 25rem;
+  }
+  > .column3 {
+    flex: 32 1 75 rem;
   }
   & .container {
     border: 0.1rem #c0c0c0 solid;
@@ -34,8 +37,8 @@ const StyledImage = styled.img`
   width: 100%;
 `;
 
-const OrderScreenWrapper = ({ children }) => {
-  return <StyledDiv>{children}</StyledDiv>;
+const OrderScreenWrapper = ({ children, justifyContent }) => {
+  return <StyledDiv justifyContent={justifyContent}>{children}</StyledDiv>;
 };
 
 export const ImageWrapper = ({ children, maxWidth, src, alt }) => {
