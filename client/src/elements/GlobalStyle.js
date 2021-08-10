@@ -39,6 +39,10 @@ a {
 a:hover {
   color: #ff8000;
 }
+header a {
+  color: #ffffff;
+  padding: 1rem;
+}
 ul {
   padding: 0;
   margin: 0;
@@ -69,19 +73,8 @@ textarea:hover,
 button:hover {
   border: 0.1rem #222831 solid;
 }
-${
-  '' /* button.primary {
-  background-color: #f0c040;
-}
-button.block {
-  width: 100%;
-}  */
-}
-
-${
-  '' /* button.small {
-  font-size: 1.2rem;
-} */
+img {
+  border-radius: 0.5rem;
 }
 `;
 export default GlobalStyle;

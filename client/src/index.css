@@ -1,14 +1,15 @@
-Header header a {
+/* Header  */
+/* header a {
   color: #ffffff;
   padding: 1rem;
-}
-a.brand {
+} */
+/* a.brand {
   color: #ffffff;
   font-size: 3rem;
   font-weight: bold;
-}
+} */
 
-.row {
+/* .row {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -37,7 +38,7 @@ a.brand {
 }
 .p-1 {
   padding: 1rem;
-}
+} */
 
 /* button.sidebar:hover {
   color: #f0c040;
@@ -45,23 +46,23 @@ a.brand {
 } */
 
 /* Image */
-img {
+/* img {
   border-radius: 0.5rem;
 }
 img.small {
   max-width: 5rem;
   width: 100%;
-}
+} */
 /* img.medium {
   max-width: 29rem;
   width: 100%;
 } */
-img.large {
+/* img.large {
   width: 100%;
-}
+} */
 
 /* Card */
-.card {
+/* .card {
   border: 0.1rem #c0c0c0 solid;
   background-color: #f8f8f8;
   border-radius: 0.5rem;
@@ -72,7 +73,7 @@ img.large {
 }
 .card-body > * {
   margin-bottom: 0.5rem;
-}
+} */
 /* .price {
   font-size: 2rem;
 } */
@@ -160,7 +161,7 @@ img.large {
 } */
 
 /* Checkout Steps*/
-.checkout-steps > div {
+/* .checkout-steps > div {
   border-top: 0.3rem #c0c0c0 solid;
   color: #c0c0c0;
   flex: 1;
@@ -171,10 +172,10 @@ img.large {
 .checkout-steps > div.active {
   border-top-color: #f08000;
   color: #f08000;
-}
+} */
 
 /* Table */
-.table {
+/* .table {
   width: 100%;
   border-collapse: collapse;
 }
@@ -192,7 +193,7 @@ img.large {
 
 .table button {
   margin: 0 0.2rem;
-}
+} */
 
 /* Carousel */
 .carousel .slide img {
@@ -200,7 +201,7 @@ img.large {
 }
 
 /* Search */
-.search button {
+/* .search button {
   border-radius: 0 0.5rem 0.5rem 0;
   border-right: none;
   margin-right: 0.5rem;
@@ -214,7 +215,7 @@ img.large {
 
 .active {
   font-weight: bold;
-}
+} */
 
 /* Pagination */
 .pagination a {

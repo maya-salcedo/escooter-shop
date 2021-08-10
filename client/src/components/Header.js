@@ -14,6 +14,9 @@ const HeaderWrapper = styled.header`
   padding: 0.5rem;
   > div {
     > a {
+      color: #ffffff;
+      font-size: 3rem;
+      font-weight: bold;
       @media (max-width: 320px) {
         font-size: 2.5rem;
       }
@@ -105,9 +108,7 @@ const Header = (props) => {
           </div>
         )}
         <div>
-          <Link className="brand" to="/">
-            escooter shop
-          </Link>
+          <Link to="/">escooter shop</Link>
         </div>
         {!isMobile && (
           <div>
