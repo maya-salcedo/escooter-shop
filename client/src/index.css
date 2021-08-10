@@ -218,7 +218,7 @@ img.small {
 } */
 
 /* Pagination */
-.pagination a {
+/* .pagination a {
   padding: 1rem;
   margin: 0.5rem;
   border-radius: 0.5rem;
@@ -231,7 +231,7 @@ img.small {
 
 .pagination a.active {
   font-weight: bold;
-}
+} */
 
 /* Dashboard */
 

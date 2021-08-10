@@ -9,6 +9,7 @@ import Rating from '../components/Rating';
 import OrderScreenWrapper, {
   DetailWrapper,
 } from '../elements/OrderScreenWrapper';
+import PageNumberWrapper from '../elements/PageNumberWrapper';
 import { prices, ratings } from '../utils';
 
 const SearchScreen = (props) => {
@@ -158,7 +159,7 @@ const SearchScreen = (props) => {
                   <Product key={product._id} product={product}></Product>
                 ))}
               </OrderScreenWrapper>
-              <div className="row center pagination">
+              <PageNumberWrapper>
                 {[...Array(pages).keys()].map((x) => (
                   <Link
                     className={x + 1 === page ? 'active' : ''}
@@ -168,7 +169,7 @@ const SearchScreen = (props) => {
                     {x + 1}
                   </Link>
                 ))}
-              </div>
+              </PageNumberWrapper>
             </>
           )}
         </div>
