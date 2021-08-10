@@ -6,6 +6,9 @@ import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import Rating from '../components/Rating';
 import Product from '../components/Product';
+import OrderScreenWrapper, {
+  ImageWrapper,
+} from '../elements/OrderScreenWrapper';
 
 const SellerScreen = (props) => {
   const sellerId = props.match.params.id;
@@ -25,27 +28,27 @@ const SellerScreen = (props) => {
     dispatch(listProducts({ seller: sellerId }));
   }, [dispatch, sellerId]);
   return (
-    <div className="row top">
-      <div className="col-1">
+    <OrderScreenWrapper>
+      <div className="column1">
         {loading ? (
           <LoadingBox></LoadingBox>
         ) : error ? (
           <MessageBox variant="danger">{error}</MessageBox>
         ) : (
-          <ul className="card card-body">
+          <ul className="container">
             <li>
-              <div className="row start">
-                <div className="p-1">
-                  <img
-                    className="small"
+              <OrderScreenWrapper justifyContent="flex-start">
+                <div className="p1">
+                  <ImageWrapper
+                    maxWidth="5rem"
                     src={user.seller.logo}
                     alt={user.seller.name}
-                  ></img>
+                  ></ImageWrapper>
                 </div>
-                <div className="p-1">
+                <div className="p1">
                   <h1>{user.seller.name}</h1>
                 </div>
-              </div>
+              </OrderScreenWrapper>
             </li>
             <li>
               <Rating
@@ -60,7 +63,7 @@ const SellerScreen = (props) => {
           </ul>
         )}
       </div>
-      <div className="col-3">
+      <div className="column3">
         {loadingProducts ? (
           <LoadingBox></LoadingBox>
         ) : errorProducts ? (
@@ -68,15 +71,15 @@ const SellerScreen = (props) => {
         ) : (
           <>
             {products.length === 0 && <MessageBox>No Product Found</MessageBox>}
-            <div className="row center">
+            <OrderScreenWrapper justifyContent="center">
               {products.map((product) => (
                 <Product key={product._id} product={product}></Product>
               ))}
-            </div>
+            </OrderScreenWrapper>
           </>
         )}
       </div>
-    </div>
+    </OrderScreenWrapper>
   );
 };
 

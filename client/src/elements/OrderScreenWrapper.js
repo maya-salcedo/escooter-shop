@@ -30,6 +30,9 @@ const StyledDiv = styled.div`
     font-size: 1.5rem;
     text-align: right;
   }
+  & .p1 {
+    padding: 1rem;
+  }
 `;
 
 const StyledImage = styled.img`
