@@ -84,21 +84,26 @@ const CartScreen = (props) => {
                 </DetailWrapper>
               </li>
             ))}
+            <li>
+              <div className="note">
+                <Link to="/">Click here to continue shopping</Link>
+              </div>
+            </li>
           </ul>
         )}
       </div>
       <div className="column1">
         <div className="container">
           <ul>
-            <li>
+            <li className="justify">
               <h2>
-                Subtotal ({cartItems.reduce((a, c) => a + c.qty, 0)} items) : €{' '}
-                {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
+                Subtotal ({cartItems.reduce((a, c) => a + c.qty, 0)} items) :
               </h2>
+              <h2>€ {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}</h2>
             </li>
             <li>
               <YellowButtonWrapper
-                type="button"
+                width="100%"
                 onClick={checkoutHandler}
                 disabled={cartItems.length === 0}
                 text="Proceed to Checkout"
