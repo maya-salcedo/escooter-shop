@@ -1,5 +1,4 @@
-/* Header */
-header a {
+Header header a {
   color: #ffffff;
   padding: 1rem;
 }
@@ -74,9 +73,9 @@ img.large {
 .card-body > * {
   margin-bottom: 0.5rem;
 }
-.price {
+/* .price {
   font-size: 2rem;
-}
+} */
 */
 /* Rating */
 .rating span {
