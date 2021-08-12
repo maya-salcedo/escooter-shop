@@ -1,6 +1,5 @@
 import React from 'react';
 import GlobalStyle from './elements/GlobalStyle';
-import { useSelector } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 import CartScreen from './screens/CartScreen';
 import HomeScreen from './screens/HomeScreen';

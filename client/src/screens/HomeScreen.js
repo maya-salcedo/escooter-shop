@@ -18,6 +18,25 @@ const ProductWrapper = styled.div`
   justify-content: center;
 `;
 
+const SellerWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  item-align: center;
+  justify-content: center;
+  & .carousel .slide img {
+    width: 30%;
+  }
+  .carousel .slide .legend {
+    bottom: 60px;
+    background: #f4dfd0;
+    color: #000000;
+    opacity: 0.75;
+    :hover {
+      opacity: 1;
+    }
+  }
+`;
+
 const HomeScreen = () => {
   const dispatch = useDispatch();
 
@@ -44,19 +63,21 @@ const HomeScreen = () => {
       ) : errorSellers ? (
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
-        <>
+        <SellerWrapper>
           {sellers.length === 0 && <MessageBox>No Sellers Found</MessageBox>}
           <Carousel showArrows autoplay showThumbs={false}>
             {sellers.map((seller) => (
               <div key={seller._id}>
-                <Link to={`/seller/${seller._id}`}>
-                  <img src={seller.seller.logo} alt={seller.seller.name} />
-                  <p className="legend">{seller.seller.name}</p>
-                </Link>
+                <div>
+                  <Link to={`/seller/${seller._id}`}>
+                    <img src={seller.seller.logo} alt={seller.seller.name} />
+                    <p className="legend">{seller.seller.name}</p>
+                  </Link>
+                </div>
               </div>
             ))}
           </Carousel>
-        </>
+        </SellerWrapper>
       )}
       <h2>Featured Products</h2>
       {loading ? (
