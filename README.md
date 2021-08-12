@@ -1,3 +1,5 @@
+[![shop-img.png](https://i.postimg.cc/52KhPQmw/shop-img.png)](https://postimg.cc/qNnDqRSR)
+
 # online-shop
 Technologies used:
 React
