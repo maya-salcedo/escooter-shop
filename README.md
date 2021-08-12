@@ -1,6 +1,6 @@
 [![shop-img.png](https://i.postimg.cc/hPfbLJfF/shop-img.png)](https://postimg.cc/zVYg5GCp)
 
-# online-shop
+# escooter-shop
 Technologies used:
 **React
 Node
