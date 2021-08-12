@@ -20,6 +20,16 @@ const ChatboxWrapper = styled.div`
     justify-content: space-between;
     align-items: center;
   }
+  & ul {
+    overflow: scroll;
+    max-height: 20rem;
+  }
+  & li {
+    margin-bottom: 1rem;
+  }
+  & input {
+    width: calc(100% - 9rem);
+  }
 `;
 
 const ENDPOINT =

@@ -2,6 +2,14 @@ import React, { useEffect, useRef, useState } from 'react';
 import socketIOClient from 'socket.io-client';
 import { useSelector } from 'react-redux';
 import MessageBox from '../components/MessageBox';
+// import styled from 'styled-components';
+
+// const SupportScreenWrapper = styled.div`
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: space-between;
+//   align-items: flex-start;
+// `;
 
 let allUsers = [];
 let allMessages = [];
