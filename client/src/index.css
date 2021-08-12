@@ -262,7 +262,7 @@ img.small {
 } */
 
 /* Chatbox */
-.chatbox {
+/* .chatbox {
   color: #000000;
   position: fixed;
   right: 1rem;
@@ -289,8 +289,8 @@ img.small {
   background-color: transparent;
   border: none;
   text-align: left;
-}
-.support-users li {
+} */
+/* .support-users li {
   margin: 0;
   background-color: #f0f0f0;
   border-bottom: 0.1rem #c0c0c0 solid;
@@ -299,9 +299,8 @@ img.small {
   background-color: #f0f0f0;
 }
 .support-users li.selected {
-  background-color: #c0c0c0;
-}
-.support-messages {
+} */
+/* .support-messages {
   padding: 1rem;
 }
 .support-messages input {
@@ -314,16 +313,16 @@ img.small {
 }
 .support-messages li {
   margin-bottom: 1rem;
-}
-.support-users span {
+} */
+/* .support-users span {
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
   position: absolute;
   margin-left: -25px;
   margin-top: 10px;
-}
-.support-users .offline {
+} */
+/* .support-users .offline {
   background-color: #808080;
 }
 .support-users .online {
@@ -331,7 +330,7 @@ img.small {
 }
 .support-users .unread {
   background-color: #f02020;
-}
+} */
 
 /* keep */
 
