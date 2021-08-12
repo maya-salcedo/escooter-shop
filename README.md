@@ -1,4 +1,4 @@
-[![shop-img.png](https://i.postimg.cc/52KhPQmw/shop-img.png)](https://postimg.cc/qNnDqRSR)
+[![shop-img.png](https://i.postimg.cc/hPfbLJfF/shop-img.png)](https://postimg.cc/zVYg5GCp)
 
 # online-shop
 Technologies used:
