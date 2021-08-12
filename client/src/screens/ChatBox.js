@@ -1,5 +1,26 @@
 import React, { useEffect, useRef, useState } from 'react';
 import socketIOClient from 'socket.io-client';
+import styled from 'styled-components';
+
+const ChatboxWrapper = styled.div`
+  color: #000000;
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  > div {
+    border: 0.1rem #c0c0c0 solid;
+    background-color: #f8f8f8;
+    border-radius: 0.5rem;
+    margin: 1rem;
+    padding: 1rem;
+  }
+  & .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+`;
 
 const ENDPOINT =
   window.location.host.indexOf('localhost') >= 0
@@ -80,13 +101,13 @@ const ChatBox = (props) => {
   };
 
   return (
-    <div className="chatbox">
+    <ChatboxWrapper>
       {!isOpen ? (
         <button type="button" onClick={supportHandler}>
           <i className="fa fa-support" />
         </button>
       ) : (
-        <div className="card card-body">
+        <div>
           <div className="row">
             <strong> Support </strong>
             <button type=" button" onClick={closeHandler}>
@@ -113,7 +134,7 @@ const ChatBox = (props) => {
           </div>
         </div>
       )}
-    </div>
+    </ChatboxWrapper>
   );
 };
 
