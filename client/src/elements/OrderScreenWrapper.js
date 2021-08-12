@@ -33,6 +33,15 @@ const StyledDiv = styled.div`
   & .p1 {
     padding: 1rem;
   }
+  & .note {
+    padding: 2rem 0;
+    font-style: italic;
+  }
+  & .justify {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+  }
 `;
 
 const StyledImage = styled.img`

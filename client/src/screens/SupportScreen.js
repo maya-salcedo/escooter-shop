@@ -2,6 +2,75 @@ import React, { useEffect, useRef, useState } from 'react';
 import socketIOClient from 'socket.io-client';
 import { useSelector } from 'react-redux';
 import MessageBox from '../components/MessageBox';
+import styled from 'styled-components';
+
+const SupportScreenWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+`;
+
+const ChatList = styled.div`
+  flex: 1 1 25rem;
+  background: #f0f0f0;
+  height: 100%;
+  & li {
+    margin: 0;
+    background-color: #f0f0f0;
+    border: 0.1rem #c0c0c0 solid;
+    :hover {
+      background-color: #f0f0f0;
+    }
+  }
+  & .selected {
+    background-color: #c0c0c0;
+  }
+  & button {
+    background-color: transparent;
+    text-align: left;
+    width: 100%;
+  }
+  & span {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    position: absolute;
+    margin-left: -25px;
+    margin-top: 10px;
+  }
+  & .offline {
+    background-color: #808080;
+  }
+  & .online {
+    background-color: #20a020;
+  }
+  & .unread {
+    background-color: #f02020;
+  }
+`;
+
+const ChatBox = styled.div`
+  flex: 32 1 75 rem;
+  padding: 1rem;
+  & .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  & input {
+    width: calc(100% - 9rem);
+  }
+  & ul {
+    height: calc(100vh - 18rem);
+    max-height: calc(100vh - 18rem);
+    overflow: scroll;
+  }
+  & li {
+    margin-bottom: 1rem;
+  }
+`;
 
 let allUsers = [];
 let allMessages = [];
@@ -63,8 +132,8 @@ const SupportScreen = () => {
           setUsers(allUsers);
         }
       });
-      sk.on('listUsers', (updatedUser) => {
-        allUsers = updatedUser;
+      sk.on('listUsers', (updatedUsers) => {
+        allUsers = updatedUsers;
         setUsers(allUsers);
       });
       sk.on('selectUser', (user) => {
@@ -110,8 +179,8 @@ const SupportScreen = () => {
   };
 
   return (
-    <div className="row top full-container">
-      <div className="col-1 support-users">
+    <SupportScreenWrapper>
+      <ChatList>
         {users.filter((x) => x._id !== userInfo._id).length === 0 && (
           <MessageBox>No Online User Found</MessageBox>
         )}
@@ -123,11 +192,7 @@ const SupportScreen = () => {
                 key={user._id}
                 className={user._id === selectedUser._id ? ' selected' : ' '}
               >
-                <button
-                  className="block"
-                  type="button"
-                  onClick={() => selectUser(user)}
-                >
+                <button type="button" onClick={() => selectUser(user)}>
                   {user.name}
                 </button>
                 <span
@@ -138,8 +203,8 @@ const SupportScreen = () => {
               </li>
             ))}
         </ul>
-      </div>
-      <div className="col-3 support-messages">
+      </ChatList>
+      <ChatBox>
         {!selectedUser._id ? (
           <MessageBox>Select a user to start a chat</MessageBox>
         ) : (
@@ -168,8 +233,8 @@ const SupportScreen = () => {
             </div>
           </div>
         )}
-      </div>
-    </div>
+      </ChatBox>
+    </SupportScreenWrapper>
   );
 };
 

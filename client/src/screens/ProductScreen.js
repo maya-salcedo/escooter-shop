@@ -11,6 +11,7 @@ import OrderScreenWrapper, {
   DetailWrapper,
   ImageWrapper,
 } from '../elements/OrderScreenWrapper';
+import ReviewWrapper, { HeadingWrapper } from '../elements/ReviewWrapper';
 import YellowButtonWrapper from '../elements/YellowButtonWrapper';
 
 const ProductScreen = (props) => {
@@ -163,22 +164,24 @@ const ProductScreen = (props) => {
             </div>
           </OrderScreenWrapper>
           <div>
-            <h2 id="reviews">Reviews</h2>
+            <HeadingWrapper>Reviews</HeadingWrapper>
             {product.reviews.length === 0 && (
               <MessageBox>There is no review</MessageBox>
             )}
             <ul>
               <li>
-                <div>
+                <ReviewWrapper>
                   {product.reviews.map((review) => (
                     <div key={review._id}>
                       <strong>{review.name}</strong>
                       <Rating rating={review.rating} caption=" "></Rating>
-                      <p>{review.createdAt.substring(0, 10)}</p>
                       <p>{review.comment}</p>
+                      <p>
+                        <i>Reviewed on {review.createdAt.substring(0, 10)}</i>
+                      </p>
                     </div>
                   ))}
-                </div>
+                </ReviewWrapper>
               </li>
               <li>
                 {userInfo ? (

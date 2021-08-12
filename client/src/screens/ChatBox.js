@@ -1,5 +1,37 @@
 import React, { useEffect, useRef, useState } from 'react';
 import socketIOClient from 'socket.io-client';
+import styled from 'styled-components';
+
+const ChatboxWrapper = styled.div`
+  color: #000000;
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 1500;
+  > div {
+    border: 0.1rem #c0c0c0 solid;
+    background-color: #f8f8f8;
+    border-radius: 0.5rem;
+    margin: 1rem;
+    padding: 1rem;
+  }
+  & .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  & ul {
+    overflow: scroll;
+    max-height: 20rem;
+  }
+  & li {
+    margin-bottom: 1rem;
+  }
+  & input {
+    width: calc(100% - 9rem);
+  }
+`;
 
 const ENDPOINT =
   window.location.host.indexOf('localhost') >= 0
@@ -65,7 +97,7 @@ const ChatBox = (props) => {
       ]);
       setMessageBody('');
       setTimeout(() => {
-        socket.emit('onMessage ', {
+        socket.emit('onMessage', {
           body: messageBody,
           name: userInfo.name,
           isAdmin: userInfo.isAdmin,
@@ -80,28 +112,26 @@ const ChatBox = (props) => {
   };
 
   return (
-    <div className="chatbox">
-      {' '}
+    <ChatboxWrapper>
       {!isOpen ? (
         <button type="button" onClick={supportHandler}>
           <i className="fa fa-support" />
         </button>
       ) : (
-        <div className="card card-body">
+        <div>
           <div className="row">
-            <strong> Support </strong>{' '}
+            <strong> Support </strong>
             <button type=" button" onClick={closeHandler}>
               <i className="fa fa-close" />
-            </button>{' '}
-          </div>{' '}
+            </button>
+          </div>
           <ul ref={uiMessagesRef}>
-            {' '}
             {messages.map((msg, index) => (
               <li key={index}>
-                <strong> {`${msg.name}: `} </strong> {msg.body}{' '}
+                <strong> {`${msg.name}: `} </strong> {msg.body}
               </li>
-            ))}{' '}
-          </ul>{' '}
+            ))}
+          </ul>
           <div>
             <form onSubmit={submitHandler} className="row">
               <input
@@ -110,12 +140,12 @@ const ChatBox = (props) => {
                 type="text"
                 placeholder="type message"
               />
-              <button type="submit"> Send </button>{' '}
-            </form>{' '}
-          </div>{' '}
+              <button type="submit"> Send </button>
+            </form>
+          </div>
         </div>
-      )}{' '}
-    </div>
+      )}
+    </ChatboxWrapper>
   );
 };
 

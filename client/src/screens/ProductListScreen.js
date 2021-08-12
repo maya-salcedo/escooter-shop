@@ -22,6 +22,7 @@ import {
 } from '../constants/productConstants';
 import YellowButtonWrapper from '../elements/YellowButtonWrapper';
 import DesktopTableWrapper from '../elements/DesktopTableWrapper';
+import PageNumberWrapper from '../elements/PageNumberWrapper';
 
 const Container = styled.div`
   display: flex;
@@ -182,7 +183,7 @@ const ProductListScreen = (props) => {
               ))}
             </>
           )}
-          <div className="row center pagination">
+          <PageNumberWrapper>
             {[...Array(pages).keys()].map((x) => (
               <Link
                 className={x + 1 === page ? 'active' : ''}
@@ -192,7 +193,7 @@ const ProductListScreen = (props) => {
                 {x + 1}
               </Link>
             ))}
-          </div>
+          </PageNumberWrapper>
         </>
       )}
     </div>
