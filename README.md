@@ -2,11 +2,11 @@
 
 # online-shop
 Technologies used:
-React
+**React
 Node
 Express
 Redux
-MongoDB
+MongoDB**
 
 ## Run locally
 1. $ git clone https://github.com/maya-salcedo/escooter-shop.git
