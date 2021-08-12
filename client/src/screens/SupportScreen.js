@@ -63,8 +63,8 @@ const SupportScreen = () => {
           setUsers(allUsers);
         }
       });
-      sk.on('listUsers', (updatedUser) => {
-        allUsers = updatedUser;
+      sk.on('listUsers', (updatedUsers) => {
+        allUsers = updatedUsers;
         setUsers(allUsers);
       });
       sk.on('selectUser', (user) => {

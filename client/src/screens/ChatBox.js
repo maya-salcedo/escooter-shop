@@ -65,7 +65,7 @@ const ChatBox = (props) => {
       ]);
       setMessageBody('');
       setTimeout(() => {
-        socket.emit('onMessage ', {
+        socket.emit('onMessage', {
           body: messageBody,
           name: userInfo.name,
           isAdmin: userInfo.isAdmin,
@@ -81,7 +81,6 @@ const ChatBox = (props) => {
 
   return (
     <div className="chatbox">
-      {' '}
       {!isOpen ? (
         <button type="button" onClick={supportHandler}>
           <i className="fa fa-support" />
@@ -89,19 +88,18 @@ const ChatBox = (props) => {
       ) : (
         <div className="card card-body">
           <div className="row">
-            <strong> Support </strong>{' '}
+            <strong> Support </strong>
             <button type=" button" onClick={closeHandler}>
               <i className="fa fa-close" />
-            </button>{' '}
-          </div>{' '}
+            </button>
+          </div>
           <ul ref={uiMessagesRef}>
-            {' '}
             {messages.map((msg, index) => (
               <li key={index}>
-                <strong> {`${msg.name}: `} </strong> {msg.body}{' '}
+                <strong> {`${msg.name}: `} </strong> {msg.body}
               </li>
-            ))}{' '}
-          </ul>{' '}
+            ))}
+          </ul>
           <div>
             <form onSubmit={submitHandler} className="row">
               <input
@@ -110,11 +108,11 @@ const ChatBox = (props) => {
                 type="text"
                 placeholder="type message"
               />
-              <button type="submit"> Send </button>{' '}
-            </form>{' '}
-          </div>{' '}
+              <button type="submit"> Send </button>
+            </form>
+          </div>
         </div>
-      )}{' '}
+      )}
     </div>
   );
 };

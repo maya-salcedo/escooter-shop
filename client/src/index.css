@@ -9,7 +9,7 @@
   font-weight: bold;
 } */
 
-/* .row {
+.row {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -38,12 +38,13 @@
 }
 .p-1 {
   padding: 1rem;
-} */
+}
+*/
 
 /* button.sidebar:hover {
   color: #f0c040;
   border: none;
-} */
+}
 
 /* Image */
 /* img {
