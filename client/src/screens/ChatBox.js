@@ -7,6 +7,7 @@ const ChatboxWrapper = styled.div`
   position: fixed;
   right: 1rem;
   bottom: 1rem;
+  z-index: 1500;
   > div {
     border: 0.1rem #c0c0c0 solid;
     background-color: #f8f8f8;
