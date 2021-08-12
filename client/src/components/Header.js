@@ -13,7 +13,7 @@ const HeaderWrapper = styled.header`
   background-color: #144d53;
   padding: 0.5rem;
   > div {
-    > a {
+    & a {
       color: #ffffff;
       font-size: 3rem;
       font-weight: bold;
@@ -41,6 +41,9 @@ const HeaderWrapper = styled.header`
       }
     }
   }
+  & .basket {
+    font-size: 150%;
+  }
 `;
 
 const BadgeWrapper = styled.span`
@@ -54,6 +57,7 @@ const BadgeWrapper = styled.span`
 
 const AsideWrapper = styled.aside`
   position: fixed;
+  top: 0;
   width: 20rem;
   height: 100%;
   background-color: #efefef;
@@ -64,16 +68,19 @@ const AsideWrapper = styled.aside`
   overflow-y: auto;
   padding: 1rem;
   > ul {
-    padding: 0;
+    padding: 1rem;
     list-style: none;
   }
-  > li {
+  & li {
     display: flex;
     justify-content: space-between;
-    padding: 1rem;
+    padding: 0.2rem;
     > button {
       padding: 0.3rem 0.8rem;
     }
+  }
+  & .basket {
+    font-size: 200%;
   }
 `;
 
@@ -135,7 +142,7 @@ const Header = (props) => {
           </li>
           <li>
             <Link to="/cart">
-              Cart
+              <i class="fa fa-shopping-cart basket"></i>
               {cartItems.length > 0 && (
                 <BadgeWrapper>{cartItems.length}</BadgeWrapper>
               )}
