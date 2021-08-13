@@ -3,10 +3,18 @@ import bcrypt from 'bcryptjs';
 const data = {
   users: [
     {
-      name: 'Maya',
-      email: 'maya@email.com',
+      name: 'Emma',
+      email: 'emma@email.com',
       password: bcrypt.hashSync('1234', 8),
       isAdmin: true,
+      isSeller: true,
+      seller: {
+        name: 'Emma Shop',
+        logo: '/images/seller1.PNG',
+        description: 'Best Seller',
+        rating: 4.5,
+        numReviews: 120,
+      },
     },
     {
       name: 'Susi',
@@ -66,7 +74,7 @@ const data = {
       image: '/images/p5.jpg',
       price: 4000,
       countInStock: 7,
-      brand: 'Puma',
+      brand: 'Kaabo',
       rating: 4.5,
       numReviews: 10,
       description: 'high quality product',
@@ -77,7 +85,7 @@ const data = {
       image: '/images/p6.jpg',
       price: 3300,
       countInStock: 0,
-      brand: 'Adidas',
+      brand: 'Zero',
       rating: 4.5,
       numReviews: 15,
       description: 'high quality product',
