@@ -8,6 +8,8 @@ Express
 Redux
 MongoDB**
 
+#A full-stack e-commerce app that is similar to Amazon web app where you can register and log-in as a user to buy and/or sell products on the app. Products can be searched, sorted, filtered, rated and reviewed. There is also a chatbox that can be used by the buyer to communicate with the seller. Sellers are ranked and the top sellers get featured. The app is screen-size responsive.
+
 ## Run locally
 1. $ git clone https://github.com/maya-salcedo/escooter-shop.git
 2. $ cd escooter-shop
