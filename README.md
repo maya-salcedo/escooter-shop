@@ -3,12 +3,12 @@
 ![Online Shop 1](https://user-images.githubusercontent.com/68334235/131619970-24695a6b-dc76-4efd-b898-cc7bed919402.gif)
 
 ### Technologies used:
-**React
-Node
-Express
-Redux
-MongoDB 
-Styled-Components 
+**React,
+Node,
+Express,
+Redux,
+MongoDB,
+Styled-Components, 
 SocketIO**
 
 ![Online Shop 2](https://user-images.githubusercontent.com/68334235/131620038-4eee99a7-cf4a-42d0-a2c2-3d39d1b929c8.gif)
