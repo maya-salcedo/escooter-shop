@@ -25,6 +25,15 @@ const SellerWrapper = styled.div`
   justify-content: center;
   & .carousel .slide img {
     width: 30%;
+    @media (max-width: 1000px) {
+      width: 50%;
+    }
+    @media (max-width: 700px) {
+      width: 60%;
+    }
+    @media (max-width: 500px) {
+      width: 70%;
+    }
   }
   .carousel .slide .legend {
     bottom: 60px;
