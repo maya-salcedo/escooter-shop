@@ -6,11 +6,19 @@ Technologies used:
 Node
 Express
 Redux
-MongoDB**
+MongoDB 
+CSS 
+SocketIO**
 
 A full-stack e-commerce app that is similar to Amazon web app where you can register and log-in as a user to buy and/or sell products on the app. Products can be searched, sorted, filtered, rated and reviewed. There is also a chatbox that can be used by the buyer to communicate with the seller. Sellers are ranked and the top sellers get featured. The app is screen-size responsive.
 
-[![Capture.png](https://i.postimg.cc/cHGvvXQd/Capture.png)](https://postimg.cc/nsTF5KRW)
+![Online Shop 1](https://user-images.githubusercontent.com/68334235/131619970-24695a6b-dc76-4efd-b898-cc7bed919402.gif)
+
+![Online Shop 2](https://user-images.githubusercontent.com/68334235/131620038-4eee99a7-cf4a-42d0-a2c2-3d39d1b929c8.gif)
+
+![Online Shop 3](https://user-images.githubusercontent.com/68334235/131620080-71a70d0b-3cdb-493d-969a-803483168b31.gif)
+
+![Online Shop 4](https://user-images.githubusercontent.com/68334235/131620129-f6306dcb-7ecc-4bcc-bffd-9eb6a49b6d27.gif)
 
 ## Run locally
 1. $ git clone https://github.com/maya-salcedo/escooter-shop.git
