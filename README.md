@@ -8,7 +8,7 @@ Node
 Express
 Redux
 MongoDB 
-CSS 
+Styled-components 
 SocketIO**
 
 ![Online Shop 2](https://user-images.githubusercontent.com/68334235/131620038-4eee99a7-cf4a-42d0-a2c2-3d39d1b929c8.gif)
