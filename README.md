@@ -1,6 +1,7 @@
+# escooter-shop
+
 ![Online Shop 1](https://user-images.githubusercontent.com/68334235/131619970-24695a6b-dc76-4efd-b898-cc7bed919402.gif)
 
-# escooter-shop
 Technologies used:
 **React
 Node
